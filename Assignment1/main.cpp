@@ -45,24 +45,52 @@ void initialise()
     float white[4]  = {1.0, 1.0, 1.0, 1.0};
     float mat[4] = { 1.0, 0.75, 0.5, 1.0 };
     
+    //loadTextures();
+    
+//    glEnable(GL_DEPTH_TEST);
+//    glEnable(GL_NORMALIZE);
+//    glEnable(GL_LIGHTING);
+//    glEnable(GL_LIGHT0);
+//    
+//    //	Define light's ambient, diffuse, specular properties
+//    glLightfv(GL_LIGHT0, GL_AMBIENT, grey);
+//    glLightfv(GL_LIGHT0, GL_DIFFUSE, white);
+//    glLightfv(GL_LIGHT0, GL_SPECULAR, white);
+//    
+//    //  Use Material color values
+//    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+//    glEnable(GL_COLOR_MATERIAL);
+//    glMaterialfv(GL_FRONT, GL_SPECULAR, white);
+//    glMaterialf(GL_FRONT, GL_SHININESS, 50);
+//    
+//    glMatrixMode (GL_PROJECTION);
+//    glLoadIdentity ();
+//    
+//
+//    glEnable(GL_TEXTURE_2D);
+//    glClearColor(0., 1., 1., 1.);    //Background colour
+    
+    
+    
+    
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
-    
-    //	Define light's ambient, diffuse, specular properties
     glLightfv(GL_LIGHT0, GL_AMBIENT, grey);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, white);
     glLightfv(GL_LIGHT0, GL_SPECULAR, white);
+    glEnable(GL_SMOOTH);
     
-    //  Use Material color values
-    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-    glEnable(GL_COLOR_MATERIAL);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mat);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, white);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100.0);
     
+    glClearColor (1.0, 1.0, 1.0, 0.0);
     
-    loadTextures();
-    glEnable(GL_TEXTURE_2D);
-    glClearColor(0., 1., 1., 1.);    //Background colour
+    glMatrixMode (GL_PROJECTION);
+    glLoadIdentity ();
+    gluPerspective(40.0, 1.0, 20.0, 500.0);
 }
 
 
@@ -210,6 +238,7 @@ void loadTextures()
 {
     glGenTextures(NUM_TEXTURES, txId); 	// Create texture ids
     
+    glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, txId[WALL_ID]);  //Use this texture
     loadTGA("Wall.tga");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
@@ -230,7 +259,7 @@ void loadTextures()
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
     }
     
-    glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_REPLACE);
+    glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
 }
 
 
@@ -241,16 +270,15 @@ void display()
     float lgt_pos[] = {0, 50, 0, 1};  //light0 position
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     
     gluPerspective(45., 1., 1., 100.);
     glLightfv(GL_LIGHT0, GL_POSITION, lgt_pos);   //light0 position
 
-    
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
     gluLookAt(eye_x, 0, eye_z,  look_x, 0, look_z,   0, 1, 0);
+    
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_LIGHTING);
     
     skybox();
     ground();
