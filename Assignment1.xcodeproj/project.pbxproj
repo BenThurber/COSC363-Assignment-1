@@ -260,9 +260,17 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/opt/X11/include,
 					/usr/local/include,
+					/usr/local/Cellar/devil/1.8.0_1/include,
 				);
-				"LIBRARY_SEARCH_PATHS[arch=*]" = /opt/X11/lib;
-				"OTHER_LDFLAGS[arch=*]" = "-lGLUT";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					/opt/X11/lib,
+					/usr/local/lib,
+					/usr/local/Cellar/devil/1.8.0_1/lib,
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-lGLUT",
+					"-lIL",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -276,9 +284,17 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/opt/X11/include,
 					/usr/local/include,
+					/usr/local/Cellar/devil/1.8.0_1/include,
 				);
-				"LIBRARY_SEARCH_PATHS[arch=*]" = /usr/local/lib;
-				"OTHER_LDFLAGS[arch=*]" = "-lGLUT";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					/usr/local/lib,
+					/opt/X11/lib,
+					/usr/local/Cellar/devil/1.8.0_1/lib,
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-lGLUT",
+					"-lIL",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
