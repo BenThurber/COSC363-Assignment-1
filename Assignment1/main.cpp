@@ -25,7 +25,7 @@
 
 using namespace std;
 
-GLuint txId[4];
+GLuint txId[NUM_TEXTURES];
 
 float cam_hgt = 30.0, angle=0, look_x, look_z=-1., eye_x, eye_z;  //Camera parameters
 
@@ -54,22 +54,22 @@ void loadTexture()
 	glGenTextures(4, txId); 				// Create a Texture object
 	glEnable(GL_TEXTURE_2D);
     
-	glBindTexture(GL_TEXTURE_2D, txId[0]);		//Use this texture
+	glBindTexture(GL_TEXTURE_2D, txId[VASE]);		//Use this texture
     loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/VaseTexture.bmp");
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
-    glBindTexture(GL_TEXTURE_2D, txId[1]);		//Use this texture
+    glBindTexture(GL_TEXTURE_2D, txId[GROUND]);		//Use this texture
     loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/grass.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
-    glBindTexture(GL_TEXTURE_2D, txId[2]);		//Use this texture
+    glBindTexture(GL_TEXTURE_2D, txId[OUTER_WALL]);		//Use this texture
     loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/metal panels generic.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
-    glBindTexture(GL_TEXTURE_2D, txId[3]);		//Use this texture
+    glBindTexture(GL_TEXTURE_2D, txId[INNER_WALL]);		//Use this texture
     loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/interior_wall.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -83,7 +83,7 @@ void loadTexture()
 // Make a ground plane that can be adjusted with macros
 void ground()
 {
-    glBindTexture(GL_TEXTURE_2D, txId[1]);
+    glBindTexture(GL_TEXTURE_2D, txId[GROUND]);
     
     // This variable makes things cleaner.  It calculates the number of tiles for the ground plane.
     int num_tiles = (float) GROUND_LENGTH / (float) GROUND_TEX_SIZE;
@@ -110,7 +110,7 @@ void vase()
         vz[i] = vz_init[i];
     }
     
-    glBindTexture(GL_TEXTURE_2D, txId[0]);
+    glBindTexture(GL_TEXTURE_2D, txId[VASE]);
     
     float theta;
     int degrees;
@@ -254,9 +254,8 @@ void display(void)
     
     ground();
     
-    GLuint txId_building[2] = {txId[2], txId[3]};
   //building(float wall_radius, float wall_height, float roof_radius, float roof_angle, float roof_thickness, int num_sides, GLuint* textures)
-    building(WALL_RADIUS, WALL_HEIGHT, ROOF_RADIUS, 30, 4, 6, txId_building);
+    building(WALL_RADIUS, WALL_HEIGHT, ROOF_RADIUS, 30, 4, 6, txId);
     
     glPushMatrix();
     glTranslatef(0, 0, -75);    // Move Vase out of the way

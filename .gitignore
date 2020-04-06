@@ -6,6 +6,6 @@
 **/.DS_Store
 
 ### Xcode ###
-Assignment1.xcodeproj/project.xcworkspace/xcshareddata/Assignment1.xccheckout
-Assignment1.xcodeproj/project.xcworkspace/xcuserdata/Ben.xcuserdatad/UserInterfaceState.xcuserstate
+Assignment1.xcodeproj/*
+
 

@@ -123,13 +123,13 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
 void building(float wall_radius, float wall_height, float roof_radius, float roof_angle, float roof_thickness, int num_sides, GLuint* textures)
 {
     roof(roof_radius, wall_height, roof_angle, roof_thickness, num_sides);
-    walls(wall_radius, wall_height, num_sides, textures[0]);
+    walls(wall_radius, wall_height, num_sides, textures[OUTER_WALL]);
     
     // Create a slightly smaller inner wall.  Wall normals should now point inward.  Easier than creating a seperate function.
     glPushMatrix();
         glRotatef(180, 0, 1, 0);
         glScalef(-1, 1, -1);
-        walls(0.95 * wall_radius, wall_height, num_sides, textures[1]);
+        walls(0.95 * wall_radius, wall_height, num_sides, textures[INNER_WALL]);
     glPopMatrix();
 }
 
