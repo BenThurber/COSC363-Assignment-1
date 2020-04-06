@@ -25,7 +25,7 @@
 
 using namespace std;
 
-GLuint txId[2];
+GLuint txId[4];
 
 float cam_hgt = 30.0, angle=0, look_x, look_z=-1., eye_x, eye_z;  //Camera parameters
 
@@ -51,7 +51,7 @@ void normal(float x1, float y1, float z1,
 //--------------------------------------------------------------------------------
 void loadTexture()
 {
-	glGenTextures(2, txId); 				// Create a Texture object
+	glGenTextures(4, txId); 				// Create a Texture object
 	glEnable(GL_TEXTURE_2D);
     
 	glBindTexture(GL_TEXTURE_2D, txId[0]);		//Use this texture
@@ -61,6 +61,16 @@ void loadTexture()
     
     glBindTexture(GL_TEXTURE_2D, txId[1]);		//Use this texture
     loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/grass.bmp");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[2]);		//Use this texture
+    loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/metal panels generic.bmp");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[3]);		//Use this texture
+    loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/interior_wall.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
@@ -178,7 +188,7 @@ void precompute_vase_curve_len() {
 //-------------------------------------------------------------------
 void initialise(void) 
 {
-    float grey[4] = {0.2, 0.2, 0.2, 1.0};
+    float grey[4] = {0.25, 0.25, 0.25, 1.0};
     float white[4]  = {1.0, 1.0, 1.0, 1.0};
 	float mat[4] = { 1.0, 0.75, 0.5, 1.0 };
 
@@ -193,7 +203,7 @@ void initialise(void)
     glLightfv(GL_LIGHT0, GL_SPECULAR, white);
 	glEnable(GL_SMOOTH);
 
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mat);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100.0);
 
@@ -244,8 +254,9 @@ void display(void)
     
     ground();
     
-  //building(int wall_radius, int wall_height, int roof_radius, int roof_angle, int roof_thickness, int num_sides)
-    building(WALL_RADIUS, WALL_HEIGHT, ROOF_RADIUS, 30, 4, 6);
+    GLuint txId_building[2] = {txId[2], txId[3]};
+  //building(float wall_radius, float wall_height, float roof_radius, float roof_angle, float roof_thickness, int num_sides, GLuint* textures)
+    building(WALL_RADIUS, WALL_HEIGHT, ROOF_RADIUS, 30, 4, 6, txId_building);
     
     glPushMatrix();
     glTranslatef(0, 0, -75);    // Move Vase out of the way
