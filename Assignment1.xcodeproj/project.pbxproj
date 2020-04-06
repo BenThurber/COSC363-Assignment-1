@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B590E6E5241F04B400F7B635 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B590E6E4241F04B400F7B635 /* main.cpp */; };
-		B590E6F2241F0E1B00F7B635 /* test_func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B590E6F0241F0E1B00F7B635 /* test_func.cpp */; };
 		B590E6F6241F1C1B00F7B635 /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B590E6F4241F1C1B00F7B635 /* keyboard.cpp */; };
 		B59869742415B52700CB409A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59869732415B52700CB409A /* OpenGL.framework */; };
+		B59A601E243A984300602619 /* Vase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59A601C243A984300602619 /* Vase.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,13 +25,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B590E6E4241F04B400F7B635 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B590E6E6241F04F900F7B635 /* loadTGA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loadTGA.h; sourceTree = "<group>"; };
 		B590E6E7241F050100F7B635 /* Floor.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Floor.tga; sourceTree = "<group>"; };
 		B590E6E8241F050100F7B635 /* Wall.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wall.tga; sourceTree = "<group>"; };
-		B590E6F0241F0E1B00F7B635 /* test_func.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_func.cpp; sourceTree = "<group>"; };
-		B590E6F1241F0E1B00F7B635 /* test_func.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_func.h; sourceTree = "<group>"; };
-		B590E6F3241F1A6700F7B635 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		B590E6F4241F1C1B00F7B635 /* keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keyboard.cpp; sourceTree = "<group>"; };
 		B590E6F5241F1C1B00F7B635 /* keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keyboard.h; sourceTree = "<group>"; };
 		B590E6FE241F319500F7B635 /* back.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = back.tga; sourceTree = "<group>"; };
@@ -43,6 +38,11 @@
 		B590E703241F319500F7B635 /* top.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = top.tga; sourceTree = "<group>"; };
 		B59869692415B3E800CB409A /* Assignment1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Assignment1; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59869732415B52700CB409A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		B59A601B243A984300602619 /* loadBMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loadBMP.h; sourceTree = "<group>"; };
+		B59A601C243A984300602619 /* Vase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vase.cpp; sourceTree = "<group>"; };
+		B59A601D243A984300602619 /* VaseTexture.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = VaseTexture.bmp; sourceTree = "<group>"; };
+		B59A601F243AA4B100602619 /* Fern.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Fern.bmp; sourceTree = "<group>"; };
+		B59A6020243AA7BD00602619 /* grass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = grass.bmp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +100,13 @@
 		B598696B2415B3E800CB409A /* Assignment1 */ = {
 			isa = PBXGroup;
 			children = (
+				B59A6020243AA7BD00602619 /* grass.bmp */,
+				B59A601F243AA4B100602619 /* Fern.bmp */,
+				B59A601B243A984300602619 /* loadBMP.h */,
+				B59A601C243A984300602619 /* Vase.cpp */,
+				B59A601D243A984300602619 /* VaseTexture.bmp */,
 				B590E6E6241F04F900F7B635 /* loadTGA.h */,
 				B590E6E9241F06EF00F7B635 /* texture_files */,
-				B590E6F3241F1A6700F7B635 /* main.h */,
-				B590E6E4241F04B400F7B635 /* main.cpp */,
-				B590E6F0241F0E1B00F7B635 /* test_func.cpp */,
-				B590E6F1241F0E1B00F7B635 /* test_func.h */,
 				B590E6F4241F1C1B00F7B635 /* keyboard.cpp */,
 				B590E6F5241F1C1B00F7B635 /* keyboard.h */,
 			);
@@ -168,9 +169,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59A601E243A984300602619 /* Vase.cpp in Sources */,
 				B590E6F6241F1C1B00F7B635 /* keyboard.cpp in Sources */,
-				B590E6E5241F04B400F7B635 /* main.cpp in Sources */,
-				B590E6F2241F0E1B00F7B635 /* test_func.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
