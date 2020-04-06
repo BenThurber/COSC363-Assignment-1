@@ -1,9 +1,11 @@
 //
-//  building.h
+//  building.cpp
 //  Assignment1
 //
 //  Created by Benjamin Gorham Thurber on 6/04/20.
-//  Copyright (c) 2020 Benjamin Gorham Thurber. All rights reserved.
+//
+//  A model of an empty museum
+//
 //
 
 #ifndef __Assignment1__building__

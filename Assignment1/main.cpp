@@ -41,41 +41,13 @@ float vz_init[N] = { 0 };
 
 float curve_lens[N];
 
-// Function Definitions (Move to header file)------------------------------------
+// Function Definitions------------------------------------
 void normal(float x1, float y1, float z1,
             float x2, float y2, float z2,
             float x3, float y3, float z3 );
-//--------------------------------------------------------------------------------
 
-
+void loadTexture();
 //--------------------------------------------------------------------------------
-void loadTexture()
-{
-	glGenTextures(4, txId); 				// Create a Texture object
-	glEnable(GL_TEXTURE_2D);
-    
-	glBindTexture(GL_TEXTURE_2D, txId[VASE]);		//Use this texture
-    loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/VaseTexture.bmp");
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    glBindTexture(GL_TEXTURE_2D, txId[GROUND]);		//Use this texture
-    loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/grass.bmp");
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    glBindTexture(GL_TEXTURE_2D, txId[OUTER_WALL]);		//Use this texture
-    loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/metal panels generic.bmp");
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    glBindTexture(GL_TEXTURE_2D, txId[INNER_WALL]);		//Use this texture
-    loadBMP("/Users/Ben/Desktop/COSC363/Assignment 1/Assignment1/Assignment1/interior_wall.bmp");
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-}
 
 
 
@@ -295,3 +267,61 @@ int main(int argc, char** argv)
    glutMainLoop();
    return 0;
 }
+//-------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------------
+void loadTexture()
+{
+    glGenTextures(4, txId); 				// Create a Texture object
+    glEnable(GL_TEXTURE_2D);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[VASE]);		//Use this texture
+    loadBMP((char*)"VaseTexture.bmp");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[GROUND]);		//Use this texture
+    loadBMP((char*)"grass.bmp");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[OUTER_WALL]);		//Use this texture
+    loadBMP((char*)"metal panels generic.bmp");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[INNER_WALL]);		//Use this texture
+    loadBMP((char*)"interior_wall.bmp");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[INNER_WALL]);		//Use this texture
+    loadBMP((char*)"interior_wall.bmp");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+}
+
+
+
+
+
+
+
+
+
