@@ -230,8 +230,7 @@ void display(void)
     skybox(400, txId);
 //    ground();
     
-  //building(float wall_radius, float wall_height, float roof_radius, float roof_angle, float roof_thickness, int num_sides, GLuint* textures)
-    building(WALL_RADIUS, WALL_HEIGHT, ROOF_RADIUS, 30, 4, 6, txId);
+//    building(WALL_RADIUS, WALL_HEIGHT, ROOF_RADIUS, 30, 4, 6, txId);
     
     glPushMatrix();
     glTranslatef(0, 0, -75);    // Move Vase out of the way

@@ -19,6 +19,8 @@ extern enum textures {SKY_RIGHT, SKY_FRONT, SKY_LEFT, SKY_BACK, SKY_TOP, SKY_BOT
 
 
 #define RAD(x) (x * (M_PI / 180))
+#define true 1
+#define false 0
 
 
 #endif /* defined(__Assignment1__textures__) */
