@@ -11,4 +11,6 @@
 
 #include <stdio.h>
 
+void skybox(int size, GLuint* textures);
+
 #endif /* defined(__Assignment1__skybox__) */

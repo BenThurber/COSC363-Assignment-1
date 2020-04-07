@@ -9,10 +9,12 @@
 #include <cmath> 
 #include <GL/freeglut.h>
 #include "loadBMP.h"
+#include "loadTGA.h"
 #include "main.h"
 
 // External Models:
 #include "building.h"
+#include "skybox.h"
 
 #define GROUND_LENGTH 400
 #define GROUND_TEX_SIZE 40
@@ -61,6 +63,7 @@ void ground()
     int num_tiles = (float) GROUND_LENGTH / (float) GROUND_TEX_SIZE;
     
     glBegin(GL_QUADS);
+    glNormal3f(0, 1, 0);
     glTexCoord2f(0, num_tiles);             glVertex3f(-GROUND_LENGTH/2, -1, -GROUND_LENGTH/2);
     glTexCoord2f(0, 0);                     glVertex3f(-GROUND_LENGTH/2, -1, GROUND_LENGTH/2);
     glTexCoord2f(num_tiles, 0);             glVertex3f(GROUND_LENGTH/2, -1, GROUND_LENGTH/2);
@@ -224,7 +227,8 @@ void display(void)
 	glEnable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_2D);
     
-    ground();
+    skybox(400, txId);
+//    ground();
     
   //building(float wall_radius, float wall_height, float roof_radius, float roof_angle, float roof_thickness, int num_sides, GLuint* textures)
     building(WALL_RADIUS, WALL_HEIGHT, ROOF_RADIUS, 30, 4, 6, txId);
@@ -259,7 +263,7 @@ int main(int argc, char** argv)
    glutInit(&argc, argv);
    glutInitDisplayMode (GLUT_SINGLE| GLUT_DEPTH);
    glutInitWindowSize (800, 800);
-   glutInitWindowPosition (100, 100);
+   glutInitWindowPosition (100, 0);
    glutCreateWindow ("Vase");
    initialise ();
    glutDisplayFunc(display);
@@ -286,8 +290,17 @@ int main(int argc, char** argv)
 //--------------------------------------------------------------------------------
 void loadTexture()
 {
-    glGenTextures(4, txId); 				// Create a Texture object
+    char* sky_files[6] = {"right.tga", "front.tga", "left.tga", "back.tga", "top.tga", "bottom.tga"};
+    
+    glGenTextures(NUM_TEXTURES, txId); 				// Create a Texture object
     glEnable(GL_TEXTURE_2D);
+    
+    for (int i=0; i < 6; i++) {
+        glBindTexture(GL_TEXTURE_2D, txId[SKY_RIGHT + i]);		//Use this texture
+        loadTGA(sky_files[i]);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    }
     
     glBindTexture(GL_TEXTURE_2D, txId[VASE]);		//Use this texture
     loadBMP((char*)"VaseTexture.bmp");
@@ -301,11 +314,6 @@ void loadTexture()
     
     glBindTexture(GL_TEXTURE_2D, txId[OUTER_WALL]);		//Use this texture
     loadBMP((char*)"metal panels generic.bmp");
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    glBindTexture(GL_TEXTURE_2D, txId[INNER_WALL]);		//Use this texture
-    loadBMP((char*)"interior_wall.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     

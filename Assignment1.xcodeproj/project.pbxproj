@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50EF9B5243BC9CB0087B626 /* skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B50EF9B3243BC9CB0087B626 /* skybox.cpp */; };
 		B590E6F6241F1C1B00F7B635 /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B590E6F4241F1C1B00F7B635 /* keyboard.cpp */; };
 		B59869742415B52700CB409A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59869732415B52700CB409A /* OpenGL.framework */; };
 		B59A601E243A984300602619 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59A601C243A984300602619 /* main.cpp */; };
@@ -28,6 +29,8 @@
 /* Begin PBXFileReference section */
 		B50EF9AF243BC7A10087B626 /* interior_wall.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = interior_wall.bmp; sourceTree = "<group>"; };
 		B50EF9B0243BC7A10087B626 /* metal panels generic.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "metal panels generic.bmp"; sourceTree = "<group>"; };
+		B50EF9B3243BC9CB0087B626 /* skybox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skybox.cpp; sourceTree = "<group>"; };
+		B50EF9B4243BC9CB0087B626 /* skybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skybox.h; sourceTree = "<group>"; };
 		B590E6E6241F04F900F7B635 /* loadTGA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loadTGA.h; sourceTree = "<group>"; };
 		B590E6F4241F1C1B00F7B635 /* keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keyboard.cpp; sourceTree = "<group>"; };
 		B590E6F5241F1C1B00F7B635 /* keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keyboard.h; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 		B598696B2415B3E800CB409A /* Assignment1 */ = {
 			isa = PBXGroup;
 			children = (
+				B50EF9B3243BC9CB0087B626 /* skybox.cpp */,
+				B50EF9B4243BC9CB0087B626 /* skybox.h */,
 				B59A601C243A984300602619 /* main.cpp */,
 				B59A6021243ACC6400602619 /* main.h */,
 				B590E6F4241F1C1B00F7B635 /* keyboard.cpp */,
@@ -187,6 +192,7 @@
 				B59A601E243A984300602619 /* main.cpp in Sources */,
 				B59A6024243ACD6A00602619 /* building.cpp in Sources */,
 				B590E6F6241F1C1B00F7B635 /* keyboard.cpp in Sources */,
+				B50EF9B5243BC9CB0087B626 /* skybox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
