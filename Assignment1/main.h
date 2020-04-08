@@ -18,6 +18,13 @@ void normal(float x1, float y1, float z1,
 extern enum textures {SKY_RIGHT, SKY_FRONT, SKY_LEFT, SKY_BACK, SKY_TOP, SKY_BOTTOM, VASE, GROUND, OUTER_WALL, INNER_WALL, COPPER_COIL, NUM_TEXTURES};
 extern enum model_names {COIL_TOP, NUM_MODELS};
 
+extern float grey[4];
+extern float white[4];
+extern float mat[4];
+extern float black[4];
+extern float silver[4];
+extern float copper[4];
+
 
 #define RAD(x) (x * (M_PI / 180))
 #define true 1

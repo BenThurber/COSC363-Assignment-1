@@ -34,6 +34,14 @@ Model* models[NUM_MODELS] = {NULL};
 
 float cam_hgt = 30.0, angle=0, look_x, look_z=-1., eye_x, eye_z;  //Camera parameters
 
+// Colours----------------------------
+float grey[4] = {0.2, 0.2, 0.2, 1.0};
+float white[4]  = {1.0, 1.0, 1.0, 1.0};
+float mat[4] = { 1.0, 0.75, 0.5, 1.0 };
+float black[4] = {0, 0, 0, 1};
+float silver[4] = {0.4, 0.4, 0.4, 1.0};
+float copper[4] = {1.0, 0.49803, 0.0, 1.0};
+
 
 const int N = 50;  // Total number of vertices on vase base curve
 
@@ -168,9 +176,6 @@ void precompute_vase_curve_len() {
 //-------------------------------------------------------------------
 void initialise(void) 
 {
-    float grey[4] = {0.2, 0.2, 0.2, 1.0};
-    float white[4]  = {1.0, 1.0, 1.0, 1.0};
-	float mat[4] = { 1.0, 0.75, 0.5, 1.0 };
 
 	loadTextures();
     loadModels();
@@ -184,7 +189,7 @@ void initialise(void)
     glLightfv(GL_LIGHT0, GL_SPECULAR, white);
 	glEnable(GL_SMOOTH);
 
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mat);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100.0);
 
