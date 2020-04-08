@@ -22,7 +22,6 @@ void coil_top(float height, Model* top)
     glColor3f(0.2, 0.2, 0.2);
     
     glPushMatrix();
-        glColor3f(0, 0, 0);
         glTranslatef(0, height, 0);
         glScalef(6, 6, 6);
         drawModel(top);
@@ -46,14 +45,13 @@ void wire_ring(float radius, int segments, float *x, float *y, float *z) {
 void coil_primary(float start_radius, float wire_dia, int num_turns)
 {
 //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);    // For solid change GL_LINE to GL_FILL
-
-//    float r = start_radius;
-//    float d = wire_dia;
     
     glDisable(GL_TEXTURE_2D);
-    glColor3f(1.0, 0.49803, 0.0);   // Copper colour
     
-    float hoff = 0;
+    float copper[4] = {1.0, 0.49803, 0.0, 1.0};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, copper);
+    
+    float hoff = 0;  //Horizontal Offset
     float voff = 0;
     
     const int N = 20;
@@ -84,11 +82,11 @@ void coil_primary(float start_radius, float wire_dia, int num_turns)
     
     for (int angle=0, j=0; angle <= 360 * num_turns; angle += 5, j++) {
         
+        
         hoff = 0.01 * j;
-        voff = 0.003 * j;
+        voff = 0.0035 * j;
         
         for (int i=0; i < N; i++) {
-            if (i > 0) normal(vx[i-1], vy[i-1], vz[i-1], vx[i], vy[i], vz[i], wx[i-1], wy[i-1], wz[i-1]);
             wx[i] = (vx_init[i] + hoff) * cos(RAD(angle)) + (vz_init[i] + hoff) * sin(RAD(angle));
             wy[i] = vy_init[i] + voff;
             wz[i] = -(vx_init[i] + hoff) * sin(RAD(angle)) + (vz_init[i] + hoff) * cos(RAD(angle));
@@ -98,8 +96,11 @@ void coil_primary(float start_radius, float wire_dia, int num_turns)
         
         glBegin(GL_QUAD_STRIP);
         
-        
-            for (int i=0, k=0; i < (N + 1); i++, k = i % N) {  // Use seperate index k to wrap arround to the start of the array on the last itteration
+            // Use seperate index k to wrap arround to the start of the array on the last itteration.
+            for (int i=0, k=0; i < (N + 1); i++, k=(i % N)) {
+//                k = (N - 1) - (i % N);  // This wraps around N and also itterates in reverse order
+                
+                if (i > 0) normal(wx[i-1], wy[i-1], wz[i-1], vx[i], vy[i], vz[i], vx[i-1], vy[i-1], vz[i-1]);
                 glVertex3f(vx[k], vy[k], vz[k]);
                 glVertex3f(wx[k], wy[k], wz[k]);
             }
@@ -116,20 +117,12 @@ void coil_primary(float start_radius, float wire_dia, int num_turns)
     }
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);    // For solid change GL_LINE to GL_FILL
     
+    float white[4] = {1.0, 1.0, 1.0, 1.0};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
     glEnable(GL_TEXTURE_2D);
     
-    
-//    glBegin(GL_QUAD_STRIP);
-//    for (int i=0; i < 5000; i++) {
-//        glPushMatrix();
-//        
-//        glVertex3f(d*cos(RAD(i)), d*sin(RAD(i)), 0.004 * i);
-//        glVertex3f(d*cos(RAD(i)), d*sin(RAD(i)), 0.004 * i + 2);
-//        
-//        glPopMatrix();
-//    }
-//    glEnd();
 }
+
 
 //----- Draws the secondary coil using a cylinder and a texture
 void secondary_coil(float radius, float height, GLuint texId)
@@ -167,13 +160,12 @@ void secondary_coil(float radius, float height, GLuint texId)
 
 void tesla_coil(GLuint texId, Model** models)
 {
-    float height = 20;
-    glScalef(2, 2, 2);
-//    glPushMatrix();
-//        glTranslatef(0, 0, -20);  // Temp
-//        glScalef(4, 4, 4);
+    float height = 21;
+    glScalef(2, 2, 2);  // Temp
+    glPushMatrix();
+        glTranslatef(0, 1, 0);
         coil_primary(5, 0.4, 9);
-//    glPopMatrix();
+    glPopMatrix();
     coil_top(height, models[COIL_TOP]);
     secondary_coil(3, height, texId);
     
