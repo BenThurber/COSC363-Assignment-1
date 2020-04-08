@@ -15,6 +15,7 @@
 // External Models:
 #include "building.h"
 #include "skybox.h"
+#include "tesla_coil.h"
 
 #define GROUND_LENGTH 400
 #define GROUND_TEX_SIZE 40
@@ -205,6 +206,12 @@ void normal(float x1, float y1, float z1,
       glNormal3f(nx, ny, nz);
 }
 
+
+
+//-------------------------------------------------------------------
+//#######################################################
+//||||||||----DISPLAY---DISPLAY---DISPLAY----||||||||||||
+//#######################################################
 //-------------------------------------------------------------------
 void display(void)
 {
@@ -236,6 +243,8 @@ void display(void)
     glTranslatef(0, 0, -75);    // Move Vase out of the way
     vase();
     glPopMatrix();
+    
+    tesla_coil(txId);
 
 
 	glFlush();
@@ -261,8 +270,8 @@ int main(int argc, char** argv)
 {
    glutInit(&argc, argv);
    glutInitDisplayMode (GLUT_SINGLE| GLUT_DEPTH);
-   glutInitWindowSize (800, 800);
-   glutInitWindowPosition (100, 0);
+   glutInitWindowSize (700, 700);
+   glutInitWindowPosition (1800, 0);
    glutCreateWindow ("Vase");
    initialise ();
    glutDisplayFunc(display);
@@ -320,6 +329,12 @@ void loadTexture()
     loadBMP((char*)"interior_wall.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[COPPER_COIL]);		//Use this texture
+    loadTGA((char*)"copper_winding.tga");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 }

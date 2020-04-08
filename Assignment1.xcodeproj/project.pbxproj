@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B50EF9B5243BC9CB0087B626 /* skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B50EF9B3243BC9CB0087B626 /* skybox.cpp */; };
+		B55685C8243D489C0064A4EA /* tesla_coil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55685C6243D489C0064A4EA /* tesla_coil.cpp */; };
 		B590E6F6241F1C1B00F7B635 /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B590E6F4241F1C1B00F7B635 /* keyboard.cpp */; };
 		B59869742415B52700CB409A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59869732415B52700CB409A /* OpenGL.framework */; };
 		B59A601E243A984300602619 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59A601C243A984300602619 /* main.cpp */; };
@@ -31,6 +32,9 @@
 		B50EF9B0243BC7A10087B626 /* metal panels generic.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "metal panels generic.bmp"; sourceTree = "<group>"; };
 		B50EF9B3243BC9CB0087B626 /* skybox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skybox.cpp; sourceTree = "<group>"; };
 		B50EF9B4243BC9CB0087B626 /* skybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skybox.h; sourceTree = "<group>"; };
+		B55685C5243D48700064A4EA /* copper_winding.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = copper_winding.tga; sourceTree = "<group>"; };
+		B55685C6243D489C0064A4EA /* tesla_coil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tesla_coil.cpp; sourceTree = "<group>"; };
+		B55685C7243D489C0064A4EA /* tesla_coil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tesla_coil.h; sourceTree = "<group>"; };
 		B590E6E6241F04F900F7B635 /* loadTGA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loadTGA.h; sourceTree = "<group>"; };
 		B590E6F4241F1C1B00F7B635 /* keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keyboard.cpp; sourceTree = "<group>"; };
 		B590E6F5241F1C1B00F7B635 /* keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keyboard.h; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 				B59A6020243AA7BD00602619 /* grass.bmp */,
 				B59A601F243AA4B100602619 /* Fern.bmp */,
 				B59A601D243A984300602619 /* VaseTexture.bmp */,
+				B55685C5243D48700064A4EA /* copper_winding.tga */,
 			);
 			name = texture_files;
 			sourceTree = "<group>";
@@ -127,6 +132,8 @@
 				B590E6F5241F1C1B00F7B635 /* keyboard.h */,
 				B59A6022243ACD6A00602619 /* building.cpp */,
 				B59A6023243ACD6A00602619 /* building.h */,
+				B55685C6243D489C0064A4EA /* tesla_coil.cpp */,
+				B55685C7243D489C0064A4EA /* tesla_coil.h */,
 				B590E6E9241F06EF00F7B635 /* texture_files */,
 				B50EF9B2243BC8480087B626 /* image_libraries */,
 			);
@@ -193,6 +200,7 @@
 				B59A6024243ACD6A00602619 /* building.cpp in Sources */,
 				B590E6F6241F1C1B00F7B635 /* keyboard.cpp in Sources */,
 				B50EF9B5243BC9CB0087B626 /* skybox.cpp in Sources */,
+				B55685C8243D489C0064A4EA /* tesla_coil.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
