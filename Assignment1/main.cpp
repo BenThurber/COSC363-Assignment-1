@@ -10,6 +10,7 @@
 #include <GL/freeglut.h>
 #include "loadBMP.h"
 #include "loadTGA.h"
+#include "loadOFF.h"
 #include "main.h"
 
 // External Models:
@@ -29,10 +30,12 @@
 using namespace std;
 
 GLuint txId[NUM_TEXTURES];
+Model* models[NUM_MODELS] = {NULL};
 
 float cam_hgt = 30.0, angle=0, look_x, look_z=-1., eye_x, eye_z;  //Camera parameters
 
-const int N = 50;  // Total number of vertices on the base curve
+
+const int N = 50;  // Total number of vertices on vase base curve
 
 float vx_init[N] = { 0, 8, 8, 7.5, 6.7, 5, 5.5, 4, 4, 5, 5.6, 6.1, 6.8, 7.1, 7.5, 8, 8.4, 8.7, 9, 9.3,
                       9.8, 10, 10.2, 10.4, 10.6, 10.9, 11, 11.1, 11.2, 11.3, 11.4, 11.3, 11.2, 11.1, 11, 10.5, 9.5, 8.2, 7, 6.2,
@@ -49,7 +52,8 @@ void normal(float x1, float y1, float z1,
             float x2, float y2, float z2,
             float x3, float y3, float z3 );
 
-void loadTexture();
+void loadTextures();
+void loadModels();
 //--------------------------------------------------------------------------------
 
 
@@ -168,7 +172,8 @@ void initialise(void)
     float white[4]  = {1.0, 1.0, 1.0, 1.0};
 	float mat[4] = { 1.0, 0.75, 0.5, 1.0 };
 
-	loadTexture();
+	loadTextures();
+    loadModels();
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_NORMALIZE);
@@ -234,6 +239,8 @@ void display(void)
 	glEnable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_2D);
     
+//    glutSolidCube(10);   // Origin reference
+    
     skybox(400, txId);
 //    ground();
     
@@ -244,7 +251,7 @@ void display(void)
     vase();
     glPopMatrix();
     
-    tesla_coil(txId);
+    tesla_coil(txId[COPPER_COIL], models);
 
 
 	glFlush();
@@ -296,7 +303,7 @@ int main(int argc, char** argv)
 
 
 //--------------------------------------------------------------------------------
-void loadTexture()
+void loadTextures()
 {
     char* sky_files[6] = {"right.tga", "front.tga", "left.tga", "back.tga", "top.tga", "bottom.tga"};
     
@@ -340,7 +347,11 @@ void loadTexture()
 }
 
 
-
+void loadModels()
+{
+    // Load tesla coil top using global variables from "tesla_coil.h"
+    models[COIL_TOP] = loadMeshFile("coil_top.off");
+}
 
 
 

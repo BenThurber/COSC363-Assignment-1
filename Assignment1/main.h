@@ -16,6 +16,7 @@ void normal(float x1, float y1, float z1,
             float x3, float y3, float z3 );
 
 extern enum textures {SKY_RIGHT, SKY_FRONT, SKY_LEFT, SKY_BACK, SKY_TOP, SKY_BOTTOM, VASE, GROUND, OUTER_WALL, INNER_WALL, COPPER_COIL, NUM_TEXTURES};
+extern enum model_names {COIL_TOP, NUM_MODELS};
 
 
 #define RAD(x) (x * (M_PI / 180))

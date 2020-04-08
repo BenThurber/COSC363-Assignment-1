@@ -9,9 +9,7 @@
 #ifndef __Assignment1__tesla_coil__
 #define __Assignment1__tesla_coil__
 
-#include <stdio.h>
 
-
-void tesla_coil(GLuint* textures);
+void tesla_coil(GLuint texId, Model** models);
 
 #endif /* defined(__Assignment1__tesla_coil__) */

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B50EF9B5243BC9CB0087B626 /* skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B50EF9B3243BC9CB0087B626 /* skybox.cpp */; };
+		B54C29F4243D72F500AF38DF /* loadOFF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54C29F2243D72F500AF38DF /* loadOFF.cpp */; };
 		B55685C8243D489C0064A4EA /* tesla_coil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55685C6243D489C0064A4EA /* tesla_coil.cpp */; };
 		B590E6F6241F1C1B00F7B635 /* keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B590E6F4241F1C1B00F7B635 /* keyboard.cpp */; };
 		B59869742415B52700CB409A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59869732415B52700CB409A /* OpenGL.framework */; };
@@ -32,6 +33,10 @@
 		B50EF9B0243BC7A10087B626 /* metal panels generic.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "metal panels generic.bmp"; sourceTree = "<group>"; };
 		B50EF9B3243BC9CB0087B626 /* skybox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skybox.cpp; sourceTree = "<group>"; };
 		B50EF9B4243BC9CB0087B626 /* skybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skybox.h; sourceTree = "<group>"; };
+		B54C29F2243D72F500AF38DF /* loadOFF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = loadOFF.cpp; sourceTree = "<group>"; };
+		B54C29F3243D72F500AF38DF /* loadOFF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loadOFF.h; sourceTree = "<group>"; };
+		B54C29FB243D7DEF00AF38DF /* Cannon.off */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cannon.off; sourceTree = "<group>"; };
+		B54C29FC243D7DF400AF38DF /* coil_top.off */ = {isa = PBXFileReference; lastKnownFileType = text; path = coil_top.off; sourceTree = "<group>"; };
 		B55685C5243D48700064A4EA /* copper_winding.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = copper_winding.tga; sourceTree = "<group>"; };
 		B55685C6243D489C0064A4EA /* tesla_coil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tesla_coil.cpp; sourceTree = "<group>"; };
 		B55685C7243D489C0064A4EA /* tesla_coil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tesla_coil.h; sourceTree = "<group>"; };
@@ -68,13 +73,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B50EF9B2243BC8480087B626 /* image_libraries */ = {
+		B50EF9B2243BC8480087B626 /* libraries */ = {
 			isa = PBXGroup;
 			children = (
 				B59A601B243A984300602619 /* loadBMP.h */,
 				B590E6E6241F04F900F7B635 /* loadTGA.h */,
+				B54C29F2243D72F500AF38DF /* loadOFF.cpp */,
+				B54C29F3243D72F500AF38DF /* loadOFF.h */,
 			);
-			name = image_libraries;
+			name = libraries;
+			sourceTree = "<group>";
+		};
+		B54C29FA243D7DE500AF38DF /* models */ = {
+			isa = PBXGroup;
+			children = (
+				B54C29FC243D7DF400AF38DF /* coil_top.off */,
+				B54C29FB243D7DEF00AF38DF /* Cannon.off */,
+			);
+			name = models;
 			sourceTree = "<group>";
 		};
 		B590E6E9241F06EF00F7B635 /* texture_files */ = {
@@ -135,7 +151,8 @@
 				B55685C6243D489C0064A4EA /* tesla_coil.cpp */,
 				B55685C7243D489C0064A4EA /* tesla_coil.h */,
 				B590E6E9241F06EF00F7B635 /* texture_files */,
-				B50EF9B2243BC8480087B626 /* image_libraries */,
+				B54C29FA243D7DE500AF38DF /* models */,
+				B50EF9B2243BC8480087B626 /* libraries */,
 			);
 			path = Assignment1;
 			sourceTree = "<group>";
@@ -197,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B59A601E243A984300602619 /* main.cpp in Sources */,
+				B54C29F4243D72F500AF38DF /* loadOFF.cpp in Sources */,
 				B59A6024243ACD6A00602619 /* building.cpp in Sources */,
 				B590E6F6241F1C1B00F7B635 /* keyboard.cpp in Sources */,
 				B50EF9B5243BC9CB0087B626 /* skybox.cpp in Sources */,
