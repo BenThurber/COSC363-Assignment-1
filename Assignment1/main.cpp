@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cmath> 
 #include <GL/freeglut.h>
+#include "keyboard.h"
 #include "loadBMP.h"
 #include "loadTGA.h"
 #include "loadOFF.h"
@@ -32,7 +33,7 @@ using namespace std;
 GLuint txId[NUM_TEXTURES];
 Model* models[NUM_MODELS] = {NULL};
 
-float cam_hgt = 30.0, angle=0, look_x, look_z=-1., eye_x, eye_z;  //Camera parameters
+float angle=0, vert_angle=0, eye_x=0, eye_y=50, eye_z=100, look_x=eye_x, look_y=eye_y, look_z=eye_z-1;  //Initial Camera parameters
 
 // Colours----------------------------
 float grey[4] = {0.2, 0.2, 0.2, 1.0};
@@ -231,7 +232,7 @@ void display(void)
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(0., cam_hgt, 100.0, 0., 20., 0., 0., 1., 0.);
+	gluLookAt(eye_x, eye_y, eye_z, look_x, look_y, look_z, 0., 1., 0.);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);    // For solid change GL_LINE to GL_FILL
 
@@ -267,12 +268,12 @@ void special(int key, int x, int y)
 {
 	if(key==GLUT_KEY_LEFT) angle -= 2;        //Rotate wagon
 	else if(key==GLUT_KEY_RIGHT) angle += 2;
-	else if(key==GLUT_KEY_UP) cam_hgt += 2;   //Change camera height
-	else if(key==GLUT_KEY_DOWN) cam_hgt -= 2;
+	else if(key==GLUT_KEY_UP) eye_y += 2;   //Change camera height
+	else if(key==GLUT_KEY_DOWN) eye_y -= 2;
 
     // Max/Min cam heights
-//	if(cam_hgt < 10) cam_hgt = 10;
-//	else if(cam_hgt > 100) cam_hgt = 100;
+//	if(eye_y < 10) eye_y = 10;
+//	else if(eye_y > 100) eye_y = 100;
 
 	glutPostRedisplay();
 }
@@ -280,16 +281,19 @@ void special(int key, int x, int y)
 //-------------------------------------------------------------------
 int main(int argc, char** argv)
 {
-   glutInit(&argc, argv);
-   glutInitDisplayMode (GLUT_SINGLE| GLUT_DEPTH);
-   glutInitWindowSize (700, 700);
-   glutInitWindowPosition (1800, 0);
-   glutCreateWindow ("Vase");
-   initialise ();
-   glutDisplayFunc(display);
-   glutSpecialFunc(special);
-   glutMainLoop();
-   return 0;
+    glutInit(&argc, argv);
+    glutInitDisplayMode (GLUT_SINGLE| GLUT_DEPTH);
+    glutInitWindowSize (700, 700);
+    glutInitWindowPosition (1800, 0);
+    glutCreateWindow ("Vase");
+    
+    initialise ();
+    glutDisplayFunc(display);
+    glutSpecialFunc(spec_key_event);
+    glutKeyboardFunc(reg_key_event);
+    glutMainLoop();
+    
+    return 0;
 }
 //-------------------------------------------------------------------
 
