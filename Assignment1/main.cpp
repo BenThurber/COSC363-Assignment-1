@@ -22,18 +22,13 @@
 #define GROUND_LENGTH 400
 #define GROUND_TEX_SIZE 40
 
-#define ROOF_RADIUS 25
-#define WALL_HEIGHT 15
-#define WALL_RADIUS 20
-
-
 
 using namespace std;
 
 GLuint txId[NUM_TEXTURES];
 Model* models[NUM_MODELS] = {NULL};
 
-float angle=0, vert_angle=0, eye_x=0, eye_y=50, eye_z=100, look_x=eye_x, look_y=eye_y, look_z=eye_z-1;  //Initial Camera parameters
+float angle=0, vert_angle=0, eye_x=0, eye_y=8, eye_z=100, look_x=eye_x, look_y=eye_y, look_z=eye_z-1;  //Initial Camera parameters
 
 // Colours----------------------------
 float grey[4] = {0.2, 0.2, 0.2, 1.0};
@@ -248,16 +243,28 @@ void display(void)
 //    glutSolidCube(10);   // Origin reference
     
     skybox(400, txId);
-//    ground();
+    ground();
     
-//    building(WALL_RADIUS, WALL_HEIGHT, ROOF_RADIUS, 30, 4, 6, txId);
+    
+    //building(<#float wall_radius#>, <#float wall_height#>, <#float roof_radius#>, <#float roof_angle#>, <#float roof_thickness#>, <#int num_sides#>, <#GLuint *textures#>)
+    building(35, 17, 42, 60, 7, 6, txId);
     
     glPushMatrix();
     glTranslatef(0, 0, -75);    // Move Vase out of the way
     vase();
     glPopMatrix();
     
-    tesla_coil(txId[COPPER_COIL], models);
+    glPushMatrix();
+        glTranslatef(23, 3, -15);
+        glPushMatrix();
+            glTranslatef(0, -2, 0);
+            glRotatef(120, 0, 1, 0);
+            glScalef(1, 0.8, 1);
+            glutSolidCube(5);        // Put Tesla coil on a box
+        glPopMatrix();
+        glScalef(0.2, 0.2, 0.2);
+        tesla_coil(txId[COPPER_COIL], models);
+    glPopMatrix();
 
 
 	glFlush();
@@ -283,7 +290,7 @@ int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
     glutInitDisplayMode (GLUT_SINGLE| GLUT_DEPTH);
-    glutInitWindowSize (700, 700);
+    glutInitWindowSize (800, 800);
     glutInitWindowPosition (1800, 0);
     glutCreateWindow ("Vase");
     

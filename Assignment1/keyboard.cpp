@@ -15,7 +15,7 @@
 
 
 // Use the key bindings outlined in the assignment
-#define STRICT true
+#define STRICT false
 
 
 // Movement Speeds

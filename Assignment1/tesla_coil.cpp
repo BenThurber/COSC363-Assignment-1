@@ -178,8 +178,7 @@ void secondary_coil(float radius, float height, GLuint texId)
 
 void tesla_coil(GLuint texId, Model** models)
 {
-    float height = 21;
-    glScalef(2, 2, 2);  // Temp
+    const float height = 21;
     glPushMatrix();
         glTranslatef(0, 1, 0);
         coil_primary(5, 0.4, 9, 2, 0.909);

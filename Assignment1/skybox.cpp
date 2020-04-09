@@ -11,6 +11,7 @@
 #include "skybox.h"
 #include "main.h"
 
+// These should not be changed (duh)
 #define CUBE_SIDES 6
 #define SQR_VERTI 4
 

@@ -86,9 +86,9 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
             if (angle <= 120) {
                 glNormal3f(0, 0, 1);
                 glTexCoord2f(i-1, 1);
-                glVertex3f(vx + 5, vy, vz);
+                glVertex3f(vx + wall_radius/4, vy, vz);
                 glTexCoord2f(i-1, 0);
-                glVertex3f(wx + 5, wy, wz);
+                glVertex3f(wx + wall_radius/4, wy, wz);
             }
             
             // All other walls
@@ -102,9 +102,9 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
             if (angle >= 420) {
                 glNormal3f(0, 0, 1);
                 glTexCoord2f(i+1, 1);
-                glVertex3f(vx - 5, vy, vz);
+                glVertex3f(vx - wall_radius/4, vy, vz);
                 glTexCoord2f(i+1, 0);
-                glVertex3f(wx - 5, wy, wz);
+                glVertex3f(wx - wall_radius/4, wy, wz);
             }
         }
     glEnd();
@@ -127,9 +127,8 @@ void building(float wall_radius, float wall_height, float roof_radius, float roo
     
     // Create a slightly smaller inner wall.  Wall normals should now point inward.  Easier than creating a seperate function.
     glPushMatrix();
-        glRotatef(180, 0, 1, 0);
-        glScalef(-1, 1, -1);
-        walls(0.95 * wall_radius, wall_height, num_sides, textures[INNER_WALL]);
+        glScalef(-1, 1, 1);
+        walls(0.99 * wall_radius, wall_height, num_sides, textures[INNER_WALL]);
     glPopMatrix();
 }
 
