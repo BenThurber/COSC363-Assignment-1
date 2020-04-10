@@ -7,6 +7,7 @@
  
 #include <iostream>
 #include <cmath> 
+#include <stdbool.h>
 #include <GL/freeglut.h>
 #include "keyboard.h"
 #include "loadBMP.h"
@@ -18,9 +19,12 @@
 #include "building.h"
 #include "skybox.h"
 #include "tesla_coil.h"
+#include "tesla_boat.h"
 
 #define GROUND_LENGTH 400
 #define GROUND_TEX_SIZE 40
+
+#define REFRESH_PERIOD 30   // Animation Refresh Rate
 
 
 using namespace std;
@@ -213,6 +217,15 @@ void normal(float x1, float y1, float z1,
 }
 
 
+//---Animation Refresh Function---------------------------------------
+void animationTimer(int value)
+{
+    boat_next_frame();
+    
+    glutPostRedisplay();
+    glutTimerFunc(REFRESH_PERIOD, animationTimer, 0);
+}
+
 
 //-------------------------------------------------------------------
 //#######################################################
@@ -240,14 +253,13 @@ void display(void)
 	glEnable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_2D);
     
-//    glutSolidCube(10);   // Origin reference
     
     skybox(400, txId);
     ground();
     
     
     //building(<#float wall_radius#>, <#float wall_height#>, <#float roof_radius#>, <#float roof_angle#>, <#float roof_thickness#>, <#int num_sides#>, <#GLuint *textures#>)
-    building(35, 17, 42, 60, 7, 6, txId);
+    building(60, 20, 70, 60, 7, 6, txId);
     
     glPushMatrix();
     glTranslatef(0, 0, -75);    // Move Vase out of the way
@@ -255,7 +267,7 @@ void display(void)
     glPopMatrix();
     
     glPushMatrix();
-        glTranslatef(23, 3, -15);
+        glTranslatef(37, 3, -22);
         glPushMatrix();
             glTranslatef(0, -2, 0);
             glRotatef(120, 0, 1, 0);
@@ -265,25 +277,13 @@ void display(void)
         glScalef(0.2, 0.2, 0.2);
         tesla_coil(txId[COPPER_COIL], models);
     glPopMatrix();
+    
+    tesla_boat(models[TESLA_BOAT]);
 
 
 	glFlush();
 }
 
-//---------------------------------------------------------------------
-void special(int key, int x, int y)
-{
-	if(key==GLUT_KEY_LEFT) angle -= 2;        //Rotate wagon
-	else if(key==GLUT_KEY_RIGHT) angle += 2;
-	else if(key==GLUT_KEY_UP) eye_y += 2;   //Change camera height
-	else if(key==GLUT_KEY_DOWN) eye_y -= 2;
-
-    // Max/Min cam heights
-//	if(eye_y < 10) eye_y = 10;
-//	else if(eye_y > 100) eye_y = 100;
-
-	glutPostRedisplay();
-}
 
 //-------------------------------------------------------------------
 int main(int argc, char** argv)
@@ -293,6 +293,7 @@ int main(int argc, char** argv)
     glutInitWindowSize (800, 800);
     glutInitWindowPosition (1800, 0);
     glutCreateWindow ("Vase");
+    glutTimerFunc(REFRESH_PERIOD, animationTimer, 0);
     
     initialise ();
     glutDisplayFunc(display);
@@ -367,6 +368,7 @@ void loadModels()
 {
     // Load tesla coil top using global variables from "tesla_coil.h"
     models[COIL_TOP] = loadMeshFile("coil_top.off");
+    models[TESLA_BOAT] = loadMeshFile("remote_boat.off");
 }
 
 
