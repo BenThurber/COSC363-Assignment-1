@@ -266,6 +266,7 @@ void display(void)
     vase();
     glPopMatrix();
     
+    
     glPushMatrix();
         glTranslatef(37, 3, -22);
         glPushMatrix();
@@ -278,7 +279,12 @@ void display(void)
         tesla_coil(txId[COPPER_COIL], models);
     glPopMatrix();
     
+    
+    glPushMatrix();
+    glTranslatef(-36, 0, -21);
+    glRotatef(60, 0, 1, 0);
     tesla_boat(models[TESLA_BOAT]);
+    glPopMatrix();
 
 
 	glFlush();

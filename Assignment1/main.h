@@ -29,6 +29,7 @@ extern float copper[4];
 
 
 #define RAD(x) (x * (M_PI / 180))
+#define DEG(x) (x * (180 / M_PI))
 #define true 1
 #define false 0
 
