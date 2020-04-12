@@ -20,6 +20,7 @@
 #include "skybox.h"
 #include "tesla_coil.h"
 #include "tesla_boat.h"
+#include "tesla_ oscillator.h"
 
 #define GROUND_LENGTH 400
 #define GROUND_TEX_SIZE 40
@@ -221,6 +222,7 @@ void normal(float x1, float y1, float z1,
 void animationTimer(int value)
 {
     boat_next_frame();
+    oscillator_next_frame();
     
     glutPostRedisplay();
     glutTimerFunc(REFRESH_PERIOD, animationTimer, 0);
@@ -281,11 +283,12 @@ void display(void)
     
     
     glPushMatrix();
-    glTranslatef(-36, 0, -21);
-    glRotatef(60, 0, 1, 0);
-    tesla_boat(models[TESLA_BOAT]);
+        glTranslatef(-36, 0, -21);
+        glRotatef(60, 0, 1, 0);
+//        tesla_boat(models[TESLA_BOAT]);
     glPopMatrix();
-
+    
+    tesla_oscillator();
 
 	glFlush();
 }

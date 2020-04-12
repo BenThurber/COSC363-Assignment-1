@@ -59,7 +59,7 @@ void tesla_boat(Model* boat)
 
 
 // Increment and Decrement x between -1 and 1
-void set_x_theta() {
+void inc_global_vars() {
     
     long double dx = (pow(A,2) - 2*pow(x,2)) / (A*sqrt(pow(A,2) - pow(x,2)));
     double speed = 0.00001 + SPEED / (1.6 * fmaxl(fabsl(dx), 1.0));
@@ -86,7 +86,7 @@ void set_x_theta() {
 // Move the boat to its next animation frame.  This should be called in each loop of a glutTimerFunc
 void boat_next_frame()
 {
-    set_x_theta();
+    inc_global_vars();
 }
 
 
