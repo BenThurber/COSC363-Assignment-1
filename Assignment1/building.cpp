@@ -65,6 +65,38 @@ void roof(float radius, float height, float angle, float thickness, int num_side
 
 
 
+void vertical_pillar(float height, float width, GLuint* textures)
+{
+    GLUquadric *quad;
+    quad = gluNewQuadric();
+    
+    glBindTexture(GL_TEXTURE_2D, textures[WOOD1]);
+    gluQuadricTexture(quad, GLU_TRUE);
+    gluQuadricOrientation(quad, GLU_OUTSIDE);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
+    
+    
+    // scale the texture of the coils
+    glMatrixMode(GL_TEXTURE);
+    glLoadIdentity();
+    glScalef(0.75, 2, 1);
+    glMatrixMode(GL_MODELVIEW);
+    
+    glPushMatrix();
+    
+    glRotatef(-90, 1, 0, 0);
+    gluCylinder(quad, width, width, height, 20, 1);
+
+    
+    glPopMatrix();
+    
+    // sets texture scaling back to normal (identity matrix)
+    glMatrixMode(GL_TEXTURE);
+    glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+}
+
+
 
 //--------------------------------------------------------------------------------
 // Make walls
@@ -104,7 +136,7 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
             glTexCoord2f(i, 0);
             glVertex3f(wx, wy, wz);
             
-            // Left side entrance wall
+            // Right side entrance wall
             if (angle >= 420) {
                 glNormal3f(0, 0, 1);
                 glTexCoord2f(i+1, 1);
@@ -118,6 +150,20 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
 
 
 
+
+void tesla_portrait(float height, GLuint* textures)
+{
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, textures[PORTRAIT]);
+    
+    glBegin(GL_QUADS);   //A simple quad
+        glNormal3f(0, 0, 1);
+        glTexCoord2f(0, 0);  glVertex3f(-10, 0, 0);
+        glTexCoord2f(1, 0);  glVertex3f(10, 0., 0);
+        glTexCoord2f(1, 1);  glVertex3f(10, 10, 0);
+        glTexCoord2f(0, 1);  glVertex3f(-10, 10, 0);
+    glEnd();
+}
 
 
 
@@ -136,6 +182,19 @@ void building(float wall_radius, float wall_height, float roof_radius, float roo
         glScalef(-1, 1, 1);
         walls(0.99 * wall_radius, wall_height, num_sides, textures[INNER_WALL]);
     glPopMatrix();
+    
+    // Create a door frame
+    const int pillar_width = 2;
+    glPushMatrix();
+        glTranslatef(wall_radius/4, 0, wall_radius * cos(RAD(30)));
+        vertical_pillar(wall_height, pillar_width, textures);
+        glPushMatrix();
+            glTranslatef(-wall_radius/2, 0, 0);
+            vertical_pillar(wall_height, pillar_width, textures);
+        glPopMatrix();
+    glPopMatrix();
+    
+//    tesla_portrait(10, textures);
 }
 
 

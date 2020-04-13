@@ -266,12 +266,14 @@ void display(void)
     //building(<#float wall_radius#>, <#float wall_height#>, <#float roof_radius#>, <#float roof_angle#>, <#float roof_thickness#>, <#int num_sides#>, <#GLuint *textures#>)
     building(60, 20, 70, 60, 7, 6, txId);
     
+    // Some random vase
     glPushMatrix();
     glTranslatef(0, 0, -75);    // Move Vase out of the way
     vase();
     glPopMatrix();
     
     
+    // Tesla Coil Exhibit
     glPushMatrix();
         glTranslatef(37, 3, -22);
         glPushMatrix();
@@ -285,13 +287,21 @@ void display(void)
     glPopMatrix();
     
     
+    // Tesla Remote Control Boat Exhibit
     glPushMatrix();
         glTranslatef(-36, 0, -21);
         glRotatef(60, 0, 1, 0);
-//        tesla_boat(models[TESLA_BOAT]);
+        tesla_boat(models[TESLA_BOAT]);
     glPopMatrix();
     
-    tesla_oscillator();
+    
+    // Tesla Oscillator, A.K.A. Earthquake Machine
+    glPushMatrix();
+        glTranslatef(37, 0, 22);
+        glRotatef(60, 0, 1, 0);
+        tesla_oscillator(0.3, 20, 5, 20);
+    glPopMatrix();
+    
 
 	glFlush();
 }
@@ -301,7 +311,7 @@ void display(void)
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode (GLUT_SINGLE| GLUT_DEPTH);
+    glutInitDisplayMode (GLUT_SINGLE| GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize (800, 800);
     glutInitWindowPosition (1800, 0);
     glutCreateWindow ("Vase");
@@ -368,6 +378,18 @@ void loadTextures()
     
     glBindTexture(GL_TEXTURE_2D, txId[COPPER_COIL]);		//Use this texture
     loadTGA((char*)"copper_winding.tga");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[WOOD1]);		//Use this texture
+    loadBMP((char*)"wood1.bmp");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[PORTRAIT]);		//Use this texture
+    loadTGA((char*)"tesla.tga");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

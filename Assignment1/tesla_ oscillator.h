@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-void tesla_oscillator();
+void tesla_oscillator(float width, float length, float end_length, int segments);
 void oscillator_next_frame();
 
 #endif /* defined(__Assignment1__tesla__oscillator__) */
