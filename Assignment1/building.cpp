@@ -150,19 +150,23 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
 
 
 
-
-void tesla_portrait(float height, GLuint* textures)
+// Create a 2D texture on a quad  pxl_w is pixel width
+void flat_image(float height, float pxl_w, float pxl_h, GLuint texId)
 {
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, textures[PORTRAIT]);
+    glBindTexture(GL_TEXTURE_2D, texId);
+    
+    float h = height;
+    float w = (pxl_w/pxl_h) * height;
     
     glBegin(GL_QUADS);   //A simple quad
         glNormal3f(0, 0, 1);
-        glTexCoord2f(0, 0);  glVertex3f(-10, 0, 0);
-        glTexCoord2f(1, 0);  glVertex3f(10, 0., 0);
-        glTexCoord2f(1, 1);  glVertex3f(10, 10, 0);
-        glTexCoord2f(0, 1);  glVertex3f(-10, 10, 0);
+        glTexCoord2f(0, 0);  glVertex3f(w/2, 0, 0);
+        glTexCoord2f(1, 0);  glVertex3f(-w/2, 0, 0);
+        glTexCoord2f(1, 1);  glVertex3f(-w/2, h, 0);
+        glTexCoord2f(0, 1);  glVertex3f(w/2, h, 0);
     glEnd();
+    
 }
 
 
@@ -194,7 +198,19 @@ void building(float wall_radius, float wall_height, float roof_radius, float roo
         glPopMatrix();
     glPopMatrix();
     
-//    tesla_portrait(10, textures);
+    // Add a wall portrait of Nikola Tesla (80% size of wall hight)
+    glPushMatrix();
+    glTranslatef(0, 0.05*wall_height, -(wall_radius * cos(RAD(30)) - 1));
+    flat_image(wall_height * 0.9, 1536, 2068, textures[PORTRAIT]);
+    glPopMatrix();
+    
+    // Add a title sign to the outside of the museum "Nikola Tesla Museum"
+    const float title_height = 5;
+    glPushMatrix();
+    glTranslatef(0, wall_height + roof_thickness/2 - title_height/2, roof_radius * cos(RAD(30)));
+    glRotatef(roof_angle - 90, 1, 0, 0);
+    flat_image(title_height, 879, 147, textures[TITLE]);
+    glPopMatrix();
 }
 
 

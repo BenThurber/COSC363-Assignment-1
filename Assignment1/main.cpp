@@ -291,7 +291,7 @@ void display(void)
     glPushMatrix();
         glTranslatef(-36, 0, -21);
         glRotatef(60, 0, 1, 0);
-        tesla_boat(models[TESLA_BOAT]);
+//        tesla_boat(models[TESLA_BOAT]);
     glPopMatrix();
     
     
@@ -389,10 +389,14 @@ void loadTextures()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[PORTRAIT]);		//Use this texture
-    loadTGA((char*)"tesla.tga");
+    loadBMP((char*)"tesla.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    
+    glBindTexture(GL_TEXTURE_2D, txId[TITLE]);		//Use this texture
+    loadTGA((char*)"title.tga");
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 }
