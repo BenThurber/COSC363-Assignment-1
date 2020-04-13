@@ -25,6 +25,9 @@ void set_roof_vertex(float angle, float radius, float height, float height_offse
 // Function to build the roof
 void roof(float radius, float height, float angle, float thickness, int num_sides)
 {
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mat);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+    
     glBindTexture(GL_TEXTURE_2D, 0);  // Unbind Last bound texture
     glColor3f(1.0, 0.498, 0.0);
     float smaller_rad = radius - thickness*(1.0/tan(RAD(angle)));
@@ -64,10 +67,13 @@ void roof(float radius, float height, float angle, float thickness, int num_side
 
 
 //--------------------------------------------------------------------------------
-// Make the walls
+// Make walls
 
 void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
 {
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+    
     glBindTexture(GL_TEXTURE_2D, texId);
     
     glBegin(GL_QUAD_STRIP);

@@ -34,7 +34,7 @@ void coil_top(float height, Model* top)
     
     
     glEnable(GL_TEXTURE_2D);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mat);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
 }
 

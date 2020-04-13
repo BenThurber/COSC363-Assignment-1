@@ -27,12 +27,16 @@ static double t2 = -NORMAL_DIST_DOM;
 
 
 // Function Declarations
-void draw_end_bar(int N, int vz[N], int vy[N], float deflection, float width, int segments, float end_length);
+void draw_end_bar(int N, float vz[N], float vy[N], float deflection, int segments, float end_length);
 float normal_distribution(float x);
 
 
 void steel_bar(float width, float length, float end_length, int segments)
 {
+    glDisable(GL_TEXTURE_2D);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, steel);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+    
     glPushMatrix();
     glTranslatef(-(length + end_length)/2, 0, 0);
     
@@ -40,11 +44,15 @@ void steel_bar(float width, float length, float end_length, int segments)
     const float seg_len = (float)length / segments;
     
     // Coordinates of the cross section of the bar
-    int vz[N] = {-1, 1, 1, -1};
-    int vy[N] = {-1, -1, 1, 1};
+    float vz[N] = {-1, 1, 1, -1};
+    float vy[N] = {-1, -1, 1, 1};
+    
+    for (int i=0; i < N; i++) {
+        vz[i] *= width;
+        vy[i] *= width;
+    }
 
     // This calculates how high each wave along the bar CAN POTENTIALLY get at the current time in the animation
-//    float current_max_deflect = MAX_DEFLECTION * sin(2*M_PI*t2);   // Change this to a bell curve equation
     float current_max_deflect = MAX_DEFLECTION * normal_distribution(t2);
     
     // This calculates how high the bar is AT THIS CURRENT FRAME
@@ -62,10 +70,12 @@ void steel_bar(float width, float length, float end_length, int segments)
         
         glBegin(GL_QUAD_STRIP);
         for (int i=0, k=0; i < (N + 1); i++, k=(i % N)) {
-//                if (i > 0) normal(wx[i-1], wy[i-1], wz[i-1], vx[i], vy[i], vz[i], vx[i-1], vy[i-1], vz[i-1]);
-                glVertex3f((j-1)*seg_len, width * vy[k] + delta_y1, width * vz[k]);
-                glVertex3f(j*seg_len,     width * vy[k] + delta_y2, width * vz[k]);
-                
+            
+            if (i > 0) normal((j)*seg_len, vy[i] + delta_y2, vz[i], (j-1)*seg_len, vy[i] + delta_y1, vz[i], (j-1)*seg_len, vy[i-1] + delta_y1, vz[i]);
+            
+            glVertex3f((j-1)*seg_len, vy[k] + delta_y1, vz[k]);
+            glVertex3f(j*seg_len,     vy[k] + delta_y2, vz[k]);
+            
             }
         glEnd();
         
@@ -74,13 +84,13 @@ void steel_bar(float width, float length, float end_length, int segments)
     
     // Make smaller bars at either end that don't bend
 //  draw_end_bar(int vz[N], int vy[N], int N, float deflection, float width, int segments, float end_length);
-    draw_end_bar(N, vz, vy, deflection, width, segments, end_length);
+    draw_end_bar(N, vz, vy, deflection, segments, end_length);
     
     // Mirror the same bar and move it to the other side.
     glPushMatrix();
     glScaled(-1.0, 1.0, 1.0);
     glTranslatef(-length, 0, 0);
-    draw_end_bar(N, vz, vy, deflection, width, segments, end_length);
+    draw_end_bar(N, vz, vy, deflection, segments, end_length);
     glPopMatrix();
     
     
@@ -88,7 +98,7 @@ void steel_bar(float width, float length, float end_length, int segments)
     glPopMatrix();
 }
 
-void draw_end_bar(int N, int vz[N], int vy[N], float deflection, float width, int segments, float end_length) {
+void draw_end_bar(int N, float vz[N], float vy[N], float deflection, int segments, float end_length) {
     float delta_y;
     glBegin(GL_QUAD_STRIP);
     for (int i=0, k=0; i < (N + 1); i++, k=(i % N)) {
@@ -96,8 +106,10 @@ void draw_end_bar(int N, int vz[N], int vy[N], float deflection, float width, in
         // it by end_length to get the y coordinate of the end bar as the rest of the bar osscilates.
         delta_y = -(deflection / segments * M_PI) * end_length;
         
-        glVertex3f(0,           width * vy[k],           width * vz[k]);
-        glVertex3f(-end_length, width * vy[k] + delta_y, width * vz[k]);
+        if (i > 0) normal(0, vy[i], vz[i], -end_length, vy[i] + delta_y, vz[i], -end_length, vy[i-1] + delta_y, vz[i]);
+        
+        glVertex3f(0,           vy[k],           vz[k]);
+        glVertex3f(-end_length, vy[k] + delta_y, vz[k]);
     }
     glEnd();
 }
@@ -118,7 +130,7 @@ void tesla_oscillator()
 {
     glPushMatrix();
         glTranslatef(0, 4, 0);
-        steel_bar(0.2, 30, 7, 30);
+        steel_bar(0.4, 30, 7, 30);
     glPopMatrix();
 }
 

@@ -37,6 +37,7 @@ float angle=0, vert_angle=0, eye_x=0, eye_y=8, eye_z=100, look_x=eye_x, look_y=e
 
 // Colours----------------------------
 float grey[4] = {0.2, 0.2, 0.2, 1.0};
+float steel[4] = {0.3, 0.3, 0.3, 1.0};
 float white[4]  = {1.0, 1.0, 1.0, 1.0};
 float mat[4] = { 1.0, 0.75, 0.5, 1.0 };
 float black[4] = {0, 0, 0, 1};
@@ -71,6 +72,8 @@ void loadModels();
 // Make a ground plane that can be adjusted with macros
 void ground()
 {
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
     glBindTexture(GL_TEXTURE_2D, txId[GROUND]);
     
     // This variable makes things cleaner.  It calculates the number of tiles for the ground plane.
@@ -190,7 +193,7 @@ void initialise(void)
     glLightfv(GL_LIGHT0, GL_SPECULAR, white);
 	glEnable(GL_SMOOTH);
 
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mat);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100.0);
 

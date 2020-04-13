@@ -19,6 +19,7 @@ extern enum textures {SKY_RIGHT, SKY_FRONT, SKY_LEFT, SKY_BACK, SKY_TOP, SKY_BOT
 extern enum model_names {COIL_TOP, TESLA_BOAT, NUM_MODELS};
 
 extern float grey[4];
+extern float steel[4];
 extern float white[4];
 extern float mat[4];
 extern float black[4];
