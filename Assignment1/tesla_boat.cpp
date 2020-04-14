@@ -60,7 +60,7 @@ void tesla_boat(Model* boat)
     
     double z = x_direction * (x * sqrt(pow(A,2) - pow(x,2))) / A;
     
-    std::cout << delta_y << "\n";
+//    std::cout << delta_y << "\n";
     
     glPushMatrix();
         glTranslated(x, height + delta_y, z);

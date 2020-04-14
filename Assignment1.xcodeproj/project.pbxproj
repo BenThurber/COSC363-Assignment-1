@@ -66,10 +66,16 @@
 		B59A6021243ACC6400602619 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		B59A6022243ACD6A00602619 /* building.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = building.cpp; sourceTree = "<group>"; };
 		B59A6023243ACD6A00602619 /* building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = building.h; sourceTree = "<group>"; };
-		B5A0E138244550FE00973C14 /* tesla.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla.bmp; sourceTree = "<group>"; };
+		B5A0E138244550FE00973C14 /* tesla0.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla0.bmp; sourceTree = "<group>"; };
 		B5A0E1392445512300973C14 /* floor.off */ = {isa = PBXFileReference; lastKnownFileType = text; path = floor.off; sourceTree = "<group>"; };
-		B5A7953624443E0B0046B09E /* wood1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wood1.bmp; sourceTree = "<group>"; };
 		B5E8424E24459CD600C7A429 /* title.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = title.tga; sourceTree = "<group>"; };
+		B5EC202A2445D34400C03667 /* wood_dark.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wood_dark.bmp; sourceTree = "<group>"; };
+		B5EC202C2445DD9600C03667 /* tesla1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla1.bmp; sourceTree = "<group>"; };
+		B5EC202D2445DD9600C03667 /* tesla2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla2.bmp; sourceTree = "<group>"; };
+		B5EC202E2445DD9600C03667 /* tesla3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla3.bmp; sourceTree = "<group>"; };
+		B5EC202F2445DD9600C03667 /* tesla4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla4.bmp; sourceTree = "<group>"; };
+		B5EC20302445DD9600C03667 /* tesla5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla5.bmp; sourceTree = "<group>"; };
+		B5EC20312445DD9600C03667 /* tesla6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla6.bmp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,16 +115,16 @@
 		B590E6E9241F06EF00F7B635 /* texture_files */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC202B2445DD7E00C03667 /* tesla_mipmap */,
 				B590E6F7241F2F6C00F7B635 /* skybox */,
 				B50EF9AF243BC7A10087B626 /* interior_wall.bmp */,
 				B50EF9B0243BC7A10087B626 /* metal panels generic.bmp */,
 				B59A6020243AA7BD00602619 /* grass.bmp */,
 				B59A601F243AA4B100602619 /* Fern.bmp */,
 				B59A601D243A984300602619 /* VaseTexture.bmp */,
+				B5EC202A2445D34400C03667 /* wood_dark.bmp */,
 				B55685C5243D48700064A4EA /* copper_winding.tga */,
 				B5E8424E24459CD600C7A429 /* title.tga */,
-				B5A0E138244550FE00973C14 /* tesla.bmp */,
-				B5A7953624443E0B0046B09E /* wood1.bmp */,
 			);
 			name = texture_files;
 			sourceTree = "<group>";
@@ -175,6 +181,20 @@
 				B50EF9B2243BC8480087B626 /* libraries */,
 			);
 			path = Assignment1;
+			sourceTree = "<group>";
+		};
+		B5EC202B2445DD7E00C03667 /* tesla_mipmap */ = {
+			isa = PBXGroup;
+			children = (
+				B5EC202C2445DD9600C03667 /* tesla1.bmp */,
+				B5EC202D2445DD9600C03667 /* tesla2.bmp */,
+				B5EC202E2445DD9600C03667 /* tesla3.bmp */,
+				B5EC202F2445DD9600C03667 /* tesla4.bmp */,
+				B5EC20302445DD9600C03667 /* tesla5.bmp */,
+				B5EC20312445DD9600C03667 /* tesla6.bmp */,
+				B5A0E138244550FE00973C14 /* tesla0.bmp */,
+			);
+			name = tesla_mipmap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

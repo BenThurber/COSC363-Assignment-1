@@ -74,7 +74,7 @@ void vertical_pillar(float height, float width, GLuint* textures)
     quad = gluNewQuadric();
     
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, textures[WOOD1]);
+    glBindTexture(GL_TEXTURE_2D, textures[WOOD_DARK]);
     gluQuadricTexture(quad, GLU_TRUE);
     gluQuadricOrientation(quad, GLU_OUTSIDE);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );

@@ -69,7 +69,7 @@ Model* loadMeshFile(const char* fname)
     fp_in.open(fname, ios::in);
     if(!fp_in.is_open())
     {
-        cout << "Error opening mesh file" << endl;
+        cout << "Error opening mesh file " << fname << endl;
         exit(1);
     }
     
@@ -93,7 +93,7 @@ Model* loadMeshFile(const char* fname)
     }
     
     fp_in.close();
-    cout << " File successfully read." << endl;
+    cout << " File " << fname << " successfully read." << endl;
     
     return model;
 }

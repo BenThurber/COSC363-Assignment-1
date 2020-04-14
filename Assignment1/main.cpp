@@ -356,24 +356,24 @@ void loadTextures()
     }
     
     glBindTexture(GL_TEXTURE_2D, txId[VASE]);		//Use this texture
-    loadBMP((char*)"VaseTexture.bmp");
+    loadBMP((char*)"VaseTexture.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
     glBindTexture(GL_TEXTURE_2D, txId[GROUND]);		//Use this texture
-    loadBMP((char*)"grass.bmp");
+    loadBMP((char*)"grass.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[OUTER_WALL]);		//Use this texture
-    loadBMP((char*)"metal panels generic.bmp");
+    loadBMP((char*)"metal panels generic.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[INNER_WALL]);		//Use this texture
-    loadBMP((char*)"interior_wall.bmp");
+    loadBMP((char*)"interior_wall.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -384,15 +384,17 @@ void loadTextures()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
-    glBindTexture(GL_TEXTURE_2D, txId[WOOD1]);		//Use this texture
-    loadBMP((char*)"wood1.bmp");
+    glBindTexture(GL_TEXTURE_2D, txId[WOOD_DARK]);		//Use this texture
+    loadBMP((char*)"wood_dark.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[PORTRAIT]);		//Use this texture
-    loadBMP((char*)"tesla.bmp");
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    loadBMP((char*)"tesla0.bmp", 0);
+//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,  GL_GENERATE_MIPMAP, 7);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     

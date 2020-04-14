@@ -11,12 +11,13 @@
 #if !defined(H_BMP)
 #define H_BMP
 
+#include <string.h>
 #include <iostream>
 #include <fstream>
 #include <GL/freeglut.h>
 using namespace std;
 
-void loadBMP(char* filename)
+void loadBMP(char* filename, int mipmap_level)
 {
     char* imageData;
 	char header1[18], header2[24];
@@ -27,7 +28,7 @@ void loadBMP(char* filename)
 	if(!file)
 	{
 		cout << "*** Error opening image file: " << filename << endl;
-		exit(1);
+        return;
 	}
 	file.read (header1, 18);		//Initial part of header
 	file.read ((char*)&wid, 4);		//Width
@@ -36,7 +37,7 @@ void loadBMP(char* filename)
 	file.read ((char*)&bpp, 2);		//Bits per pixel
 	file.read (header2, 24);		//Remaining part of header
 
-//		cout << "Width =" << wid << "   Height = " << hgt << " Bpp = " << bpp << endl;
+		cout << "Width =" << wid << "   Height = " << hgt << " Bpp = " << bpp << endl;
 
 	nbytes = bpp / 8;           //No. of bytes per pixels
 	size = wid * hgt * nbytes;  //Total number of bytes to be read
@@ -50,8 +51,20 @@ void loadBMP(char* filename)
 	    imageData[indx] = imageData[indx+2];
 	    imageData[indx+2] = temp;
     }
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, wid, hgt, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+	glTexImage2D(GL_TEXTURE_2D, mipmap_level, 3, wid, hgt, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
     delete imageData;
+    
+    // Try to open the next mipmap recursivley >:)
+    char* new_filename = NULL;
+    char* last_chr = strrchr(filename, '.') - 1;     // The last character of the filename before the dot
+    if (*last_chr >= '0' && *last_chr <= '9') {      // If character is number
+        new_filename = new char[strlen(filename) + 1];
+        strcpy(new_filename, filename);
+        (new_filename[last_chr - filename])++;       // Increment it
+        loadBMP(new_filename, mipmap_level + 1);     // And call function again
+    }
+    delete new_filename;
+    
 }
 
 #endif
