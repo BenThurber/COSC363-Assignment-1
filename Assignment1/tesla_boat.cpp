@@ -23,11 +23,22 @@
 
 float boat_color[4] = {0.4500, 0.3098, 0.0, 1.0};
 
+static GLuint light;
+
 static double x = 0;        // Boat's x coord
 static double theta = -90;  // Boat's angle along the curve
 static float delta_y = 0;   // The amount the boat 'bobs' up and down
 static int x_direction = 1;
 
+
+void boat_spotlight()
+{
+    float light1_dir[] = {0, -1, 0};  //light1 direction
+    float light1_pos[] = {0, 2, 0, 1};  //light1 position
+    
+    glLightfv(light, GL_SPOT_DIRECTION, light1_dir);
+    glLightfv(light, GL_POSITION, light1_pos);
+}
 
 //----- Draws the boat from a model file that is loaded in "main.cpp" ------
 void tesla_boat(Model* boat)
@@ -48,6 +59,7 @@ void tesla_boat(Model* boat)
         glTranslated(x, height + delta_y, z);
         glRotatef(theta, 0, 1, 0);
         glScalef(size, size, size);
+        boat_spotlight();
         drawModel(boat);
     glPopMatrix();
     
@@ -90,8 +102,19 @@ void boat_next_frame()
 }
 
 
-
-
+// This goes in intitalize function in main
+void boat_init_light(GLuint boat_light)
+{
+    glEnable(GL_LIGHTING);
+    light = boat_light;
+    glEnable(light);
+    //  Define light 1's properties
+    glLightfv(light , GL_AMBIENT, grey);
+    glLightfv(light, GL_DIFFUSE, white);
+    glLightfv(light, GL_SPECULAR, white);
+    glLightf(light, GL_SPOT_CUTOFF, 30.0);
+    glLightf(light, GL_SPOT_EXPONENT, 0.01);
+}
 
 
 

@@ -23,6 +23,7 @@
 #include "tesla_ oscillator.h"
 
 #define GROUND_LENGTH 400
+#define GROUND_HEIGHT -0.01
 #define GROUND_TEX_SIZE 40
 
 #define REFRESH_PERIOD 30   // Animation Refresh Rate
@@ -43,6 +44,7 @@ float mat[4] = { 1.0, 0.75, 0.5, 1.0 };
 float black[4] = {0, 0, 0, 1};
 float silver[4] = {0.4, 0.4, 0.4, 1.0};
 float copper[4] = {1.0, 0.49803, 0.0, 1.0};
+float mocha[4] = {0.5, 0.25, 0.0, 1.0};
 
 
 const int N = 50;  // Total number of vertices on vase base curve
@@ -81,10 +83,10 @@ void ground()
     
     glBegin(GL_QUADS);
     glNormal3f(0, 1, 0);
-    glTexCoord2f(0, num_tiles);             glVertex3f(-GROUND_LENGTH/2, -1, -GROUND_LENGTH/2);
-    glTexCoord2f(0, 0);                     glVertex3f(-GROUND_LENGTH/2, -1, GROUND_LENGTH/2);
-    glTexCoord2f(num_tiles, 0);             glVertex3f(GROUND_LENGTH/2, -1, GROUND_LENGTH/2);
-    glTexCoord2f(num_tiles, num_tiles);     glVertex3f(GROUND_LENGTH/2, -1, -GROUND_LENGTH/2);
+    glTexCoord2f(0, num_tiles);             glVertex3f(-GROUND_LENGTH/2, GROUND_HEIGHT, -GROUND_LENGTH/2);
+    glTexCoord2f(0, 0);                     glVertex3f(-GROUND_LENGTH/2, GROUND_HEIGHT, GROUND_LENGTH/2);
+    glTexCoord2f(num_tiles, 0);             glVertex3f(GROUND_LENGTH/2, GROUND_HEIGHT, GROUND_LENGTH/2);
+    glTexCoord2f(num_tiles, num_tiles);     glVertex3f(GROUND_LENGTH/2, GROUND_HEIGHT, -GROUND_LENGTH/2);
     glEnd();
 }
 
@@ -145,24 +147,7 @@ void vase()
     }
 }
 
-//-- Ground Plane --------------------------------------------------------
-void floor()
-{
-	glDisable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
-	glColor3f(0.7, 0.7,  0.7);			//Floor colour
 
-	for(int i = -200; i <= 200; i +=5)
-	{
-		glBegin(GL_LINES);			//A set of grid lines on the xz-plane
-			glVertex3f(-200, 0, i);
-			glVertex3f(200, 0, i);
-			glVertex3f(i, 0, -200);
-			glVertex3f(i, 0, 200);
-		glEnd();
-	}
-	glEnable(GL_LIGHTING);
-}
 
 //-------------------------------------------------------------------
 
@@ -191,6 +176,9 @@ void initialise(void)
     glLightfv(GL_LIGHT0, GL_AMBIENT, grey);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, white);
     glLightfv(GL_LIGHT0, GL_SPECULAR, white);
+    
+    boat_init_light(GL_LIGHT1);
+    
 	glEnable(GL_SMOOTH);
 
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
@@ -258,13 +246,13 @@ void display(void)
 	glEnable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_2D);
     
+    building(60, 20, 70, 60, 7, 6, txId, models);
     
     skybox(400, txId);
     ground();
     
     
-    //building(<#float wall_radius#>, <#float wall_height#>, <#float roof_radius#>, <#float roof_angle#>, <#float roof_thickness#>, <#int num_sides#>, <#GLuint *textures#>)
-    building(60, 20, 70, 60, 7, 6, txId);
+    
     
     // Some random vase
     glPushMatrix();
@@ -291,7 +279,7 @@ void display(void)
     glPushMatrix();
         glTranslatef(-36, 0, -21);
         glRotatef(60, 0, 1, 0);
-//        tesla_boat(models[TESLA_BOAT]);
+        tesla_boat(models[TESLA_BOAT]);
     glPopMatrix();
     
     
@@ -305,6 +293,21 @@ void display(void)
 
 	glFlush();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //-------------------------------------------------------------------
@@ -326,14 +329,6 @@ int main(int argc, char** argv)
     return 0;
 }
 //-------------------------------------------------------------------
-
-
-
-
-
-
-
-
 
 
 
@@ -407,6 +402,7 @@ void loadModels()
     // Load tesla coil top using global variables from "tesla_coil.h"
     models[COIL_TOP] = loadMeshFile("coil_top.off");
     models[TESLA_BOAT] = loadMeshFile("remote_boat.off");
+    models[FLOOR] = loadMeshFile("floor.off");
 }
 
 

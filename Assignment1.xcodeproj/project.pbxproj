@@ -66,7 +66,8 @@
 		B59A6021243ACC6400602619 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		B59A6022243ACD6A00602619 /* building.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = building.cpp; sourceTree = "<group>"; };
 		B59A6023243ACD6A00602619 /* building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = building.h; sourceTree = "<group>"; };
-		B5A7953524443E0B0046B09E /* tesla.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = tesla.tga; sourceTree = "<group>"; };
+		B5A0E138244550FE00973C14 /* tesla.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla.bmp; sourceTree = "<group>"; };
+		B5A0E1392445512300973C14 /* floor.off */ = {isa = PBXFileReference; lastKnownFileType = text; path = floor.off; sourceTree = "<group>"; };
 		B5A7953624443E0B0046B09E /* wood1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wood1.bmp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +97,7 @@
 		B54C29FA243D7DE500AF38DF /* models */ = {
 			isa = PBXGroup;
 			children = (
+				B5A0E1392445512300973C14 /* floor.off */,
 				B54488AB243F45FA00BD6674 /* remote_boat.off */,
 				B54C29FC243D7DF400AF38DF /* coil_top.off */,
 				B54C29FB243D7DEF00AF38DF /* Cannon.off */,
@@ -113,7 +115,7 @@
 				B59A601F243AA4B100602619 /* Fern.bmp */,
 				B59A601D243A984300602619 /* VaseTexture.bmp */,
 				B55685C5243D48700064A4EA /* copper_winding.tga */,
-				B5A7953524443E0B0046B09E /* tesla.tga */,
+				B5A0E138244550FE00973C14 /* tesla.bmp */,
 				B5A7953624443E0B0046B09E /* wood1.bmp */,
 			);
 			name = texture_files;

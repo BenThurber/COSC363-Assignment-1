@@ -13,7 +13,7 @@
 #include "main.h"
 
 #define MAX_DEFLECTION 0.2
-#define FREQUENCY 0.1
+#define FREQUENCY 0.18
 #define MAX_AMP_SPEED 0.035
 #define NORMAL_DIST_DOM 3.5    // The domain of the normal distribution is +/- this number
 
@@ -29,9 +29,12 @@ static double t2 = -NORMAL_DIST_DOM;
 // Function Declarations
 void draw_end_bar(int N, float vz[N], float vy[N], float deflection, int segments, float end_length);
 float normal_distribution(float x);
+//----------------------
 
 
-void steel_bar(float width, float length, float end_length, int segments)
+
+// Draw a square (supposed to be steel) bar that the tesla ocsillator induces a resonant frequency on
+void steel_bar(float width, float length, float end_length, int segments, float* deflection)
 {
     glDisable(GL_TEXTURE_2D);
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, steel);
@@ -56,7 +59,7 @@ void steel_bar(float width, float length, float end_length, int segments)
     float current_max_deflect = MAX_DEFLECTION * normal_distribution(t2);
     
     // This calculates how high the bar is AT THIS CURRENT FRAME
-    float deflection = current_max_deflect * sin(2*M_PI*t1);
+    *deflection = current_max_deflect * sin(2*M_PI*t1);
     
     
     
@@ -65,8 +68,8 @@ void steel_bar(float width, float length, float end_length, int segments)
     for (int j=1; j <= segments; j++) {
         
         // This calculates delta y at the CURRENT SEGMENT of the bar
-        float delta_y1 = deflection * sin((float)(j-1)/segments * M_PI);
-        float delta_y2 = deflection * sin((float)j/segments * M_PI);
+        float delta_y1 = *deflection * sin((float)(j-1)/segments * M_PI);
+        float delta_y2 = *deflection * sin((float)j/segments * M_PI);
         
         glBegin(GL_QUAD_STRIP);
         for (int i=0, k=0; i < (N + 1); i++, k=(i % N)) {
@@ -83,26 +86,21 @@ void steel_bar(float width, float length, float end_length, int segments)
     
     
     // Make smaller bars at either end that don't bend
-    draw_end_bar(N, vz, vy, deflection, segments, end_length);
+    draw_end_bar(N, vz, vy, *deflection, segments, end_length);
+    
     
     // Mirror the same bar and move it to the other side.
     glPushMatrix();
     glScaled(-1.0, 1.0, 1.0);
     glTranslatef(-length, 0, 0);
-    draw_end_bar(N, vz, vy, deflection, segments, end_length);
-    glPopMatrix();
-    
-    
-    // Draw the actual tesla oscillator in the centre of the bar
-    glPushMatrix();
-    glTranslatef(length/2, width + 0.5 + deflection, 0);
-    glutSolidCube(1);  // Change this to a model of the oscillator
+    draw_end_bar(N, vz, vy, *deflection, segments, end_length);
     glPopMatrix();
     
     
     glPopMatrix();
 }
 
+// Draw a section of the steel bar that is to the left of the bar_mount
 void draw_end_bar(int N, float vz[N], float vy[N], float deflection, int segments, float end_length) {
     float delta_y;
     glBegin(GL_QUAD_STRIP);
@@ -120,7 +118,28 @@ void draw_end_bar(int N, float vz[N], float vy[N], float deflection, int segment
 }
 
 
+// Draw the actual tesla oscillator in the centre of the bar
+void oscillator(float bar_width, float oscil_height, float deflection)
+{
+    const float cube_size = bar_width * 3.3;
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mocha);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+    
+    glPushMatrix();
+        glTranslatef(0, bar_width + cube_size/2 + deflection, 0);
+        glPushMatrix();
+            glutSolidCube(cube_size);
+            glPushMatrix();
+                glTranslatef(0, cube_size + cube_size*0.75, 0);
+                glRotatef(90, 1, 0, 0);
+                glutSolidCylinder(cube_size/3, cube_size*1.5, 10, 1);
+            glPopMatrix();
+        glPopMatrix();
+    glPopMatrix();
+}
 
+
+// Returns a normal distribution, A.K.A bell curve
 float normal_distribution(float x) {
     const float u = 0;
     const float roh = 1;
@@ -136,7 +155,7 @@ void inc_glabal_vars()
     t2 = fmod((t2 + MAX_AMP_SPEED + NORMAL_DIST_DOM), 2*NORMAL_DIST_DOM) - NORMAL_DIST_DOM;
 }
 
-
+// Move to the next animation frame
 void oscillator_next_frame()
 {
     inc_glabal_vars();
@@ -150,6 +169,7 @@ void bar_mount(float bar_width, float bar_length, float bar_height, float cylind
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
     
+    // The boxes at either end
     glPushMatrix();
         glTranslatef(-bar_length/2, 1.2, 0);
         glutSolidCube(bar_width * 10);
@@ -159,6 +179,7 @@ void bar_mount(float bar_width, float bar_length, float bar_height, float cylind
         glPopMatrix();
     glPopMatrix();
     
+    // The cylynders on the bexes that the bar rests on
     glPushMatrix();
         glTranslatef(-bar_length/2,   bar_height-bar_width-cylinder_dia,   -(bar_width*5));
         glutSolidCylinder(cylinder_dia, bar_width * 10, 20, 1);
@@ -171,6 +192,14 @@ void bar_mount(float bar_width, float bar_length, float bar_height, float cylind
     glEnable(GL_TEXTURE_2D);
 }
 
+/*
+Function to draw everything in this file
+Parameters:
+   - width is the width of the bar
+   - length is the length of the bar between the two supports
+   - end_length is the length between the support and the end of the bar
+   - segments is the number of segments in in the middle of the bar
+ */
 void tesla_oscillator(float width, float length, float end_length, int segments)
 {
     glDisable(GL_TEXTURE_2D);
@@ -178,10 +207,16 @@ void tesla_oscillator(float width, float length, float end_length, int segments)
     const float height = 4;   // Height of the steel bar
     const float cylinder_dia = 1;
     
+    float deflection = 0;  // How high the bar is at each animation frame
+    
+    
     glPushMatrix();
     glTranslatef(0, height, 0);
     
-    steel_bar(width, length, end_length, segments);
+    steel_bar(width, length, end_length, segments, &deflection);
+    
+    oscillator(width, 1, deflection);
+    
     glPopMatrix();
     
     bar_mount(width, length, height, cylinder_dia);

@@ -12,6 +12,7 @@
 #include <cmath>
 #include "main.h"
 #include "building.h"
+#include "loadOFF.h"
 
 #define INC_ANGLE (360/num_sides)
 
@@ -150,6 +151,24 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
 
 
 
+// Draw a floor only inside the museum
+void floor(float size, Model* model)
+{
+    glEnable(GL_LIGHTING);
+//    glColor4f(0.7, 0.7, 0.7, 1.0);  //The floor is gray in colour
+//    glMaterialfv(GL_FRONT, GL_SPECULAR, black);  // Disable specular reflections
+//    glMaterialfv(GL_FRONT, GL_DIFFUSE, grey);
+    
+    glPushMatrix();
+        glScalef(size, 1, size);
+        drawModel(model);
+    glPopMatrix();
+    
+//    glMaterialfv(GL_FRONT, GL_SPECULAR, white);   //Reset specular reflections to white
+}
+
+
+
 // Create a 2D texture on a quad  pxl_w is pixel width
 void flat_image(float height, float pxl_w, float pxl_h, GLuint texId)
 {
@@ -176,8 +195,10 @@ void flat_image(float height, float pxl_w, float pxl_h, GLuint texId)
 // Make the whole building
 
 // Note textures is an array on length [???] that holds texture IDs
-void building(float wall_radius, float wall_height, float roof_radius, float roof_angle, float roof_thickness, int num_sides, GLuint* textures)
+void building(float wall_radius, float wall_height, float roof_radius, float roof_angle, float roof_thickness, int num_sides, GLuint* textures, Model **models)
 {
+    floor(wall_radius, models[FLOOR]);
+    
     roof(roof_radius, wall_height, roof_angle, roof_thickness, num_sides);
     walls(wall_radius, wall_height, num_sides, textures[OUTER_WALL]);
     
@@ -200,16 +221,16 @@ void building(float wall_radius, float wall_height, float roof_radius, float roo
     
     // Add a wall portrait of Nikola Tesla (80% size of wall hight)
     glPushMatrix();
-    glTranslatef(0, 0.05*wall_height, -(wall_radius * cos(RAD(30)) - 1));
-    flat_image(wall_height * 0.9, 1536, 2068, textures[PORTRAIT]);
+        glTranslatef(0, 0.05*wall_height, -(wall_radius * cos(RAD(30)) - 1));
+        flat_image(wall_height * 0.9, 1536, 2068, textures[PORTRAIT]);
     glPopMatrix();
     
     // Add a title sign to the outside of the museum "Nikola Tesla Museum"
     const float title_height = 5;
     glPushMatrix();
-    glTranslatef(0, wall_height + roof_thickness/2 - title_height/2, roof_radius * cos(RAD(30)));
-    glRotatef(roof_angle - 90, 1, 0, 0);
-    flat_image(title_height, 879, 147, textures[TITLE]);
+        glTranslatef(0, wall_height + roof_thickness/2 - title_height/2, roof_radius * cos(RAD(30)));
+        glRotatef(roof_angle - 90, 1, 0, 0);
+        flat_image(title_height, 879, 147, textures[TITLE]);
     glPopMatrix();
 }
 

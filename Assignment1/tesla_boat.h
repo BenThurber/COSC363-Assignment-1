@@ -14,5 +14,6 @@
 
 void tesla_boat(Model* boat);
 void boat_next_frame();
+void boat_init_light(GLuint light);
 
 #endif /* defined(__Assignment1__tesla_boat__) */
