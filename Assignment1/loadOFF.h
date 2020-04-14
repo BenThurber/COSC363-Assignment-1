@@ -27,6 +27,7 @@ typedef struct {
 
 Model* loadMeshFile(const char* fname);
 void drawModel(Model* model);
+void freeModel(Model* model);
 
 
 #endif /* defined(__Assignment1__loadOFF__) */

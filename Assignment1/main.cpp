@@ -304,8 +304,13 @@ void display(void)
 
 
 
-
-
+// Free allocated memory
+void teardown()
+{
+    for (int i=0; i < NUM_MODELS; i++) {
+        freeModel(models[i]);
+    }
+}
 
 
 //-------------------------------------------------------------------
@@ -324,6 +329,7 @@ int main(int argc, char** argv)
     glutKeyboardFunc(reg_key_event);
     glutMainLoop();
     
+    teardown();
     return 0;
 }
 //-------------------------------------------------------------------
@@ -358,16 +364,19 @@ void loadTextures()
     loadBMP((char*)"grass.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[OUTER_WALL]);		//Use this texture
     loadBMP((char*)"metal panels generic.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[INNER_WALL]);		//Use this texture
     loadBMP((char*)"interior_wall.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[COPPER_COIL]);		//Use this texture
     loadTGA((char*)"copper_winding.tga");
@@ -385,11 +394,13 @@ void loadTextures()
     loadBMP((char*)"tesla.bmp");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     
     glBindTexture(GL_TEXTURE_2D, txId[TITLE]);		//Use this texture
     loadTGA((char*)"title.tga");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     
     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 }

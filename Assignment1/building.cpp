@@ -186,10 +186,10 @@ void flat_image(float height, float pxl_w, float pxl_h, GLuint texId)
     
     glBegin(GL_QUADS);   //A simple quad
         glNormal3f(0, 0, 1);
-        glTexCoord2f(0, 0);  glVertex3f(w/2, 0, 0);
-        glTexCoord2f(1, 0);  glVertex3f(-w/2, 0, 0);
-        glTexCoord2f(1, 1);  glVertex3f(-w/2, h, 0);
-        glTexCoord2f(0, 1);  glVertex3f(w/2, h, 0);
+        glTexCoord2f(1, 0);  glVertex3f(w/2, 0, 0);
+        glTexCoord2f(0, 0);  glVertex3f(-w/2, 0, 0);
+        glTexCoord2f(0, 1);  glVertex3f(-w/2, h, 0);
+        glTexCoord2f(1, 1);  glVertex3f(w/2, h, 0);
     glEnd();
     
 }

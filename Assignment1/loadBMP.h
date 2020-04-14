@@ -51,7 +51,7 @@ void loadBMP(char* filename)
 	    imageData[indx+2] = temp;
     }
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, wid, hgt, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);
-    delete imageData;	
+    delete imageData;
 }
 
 #endif
