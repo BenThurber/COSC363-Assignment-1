@@ -275,7 +275,7 @@ void display(void)
     
     // Tesla Remote Control Boat Exhibit
     glPushMatrix();
-        glTranslatef(-36, 0, -21);
+        glTranslatef(-23, 0, -12);
         glRotatef(60, 0, 1, 0);
         tesla_boat(models[TESLA_BOAT]);
     glPopMatrix();

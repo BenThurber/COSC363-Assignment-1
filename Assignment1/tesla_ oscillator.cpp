@@ -12,7 +12,7 @@
 #include "tesla_ oscillator.h"
 #include "main.h"
 
-#define MAX_DEFLECTION 0.2
+#define MAX_DEFLECTION 0.17
 #define FREQUENCY 0.18
 #define MAX_AMP_SPEED 0.035
 #define NORMAL_DIST_DOM 3.5    // The domain of the normal distribution is +/- this number
