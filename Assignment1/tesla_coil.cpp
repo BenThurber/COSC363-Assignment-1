@@ -22,9 +22,9 @@ void coil_top(float height, Model* top)
 {
     glDisable(GL_TEXTURE_2D);
 
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, silver);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, silver);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 10);
-    
+    glColor3f(0.4, 0.4, 0.4);  // Silver
     
     glPushMatrix();
         glTranslatef(0, height, 0);
@@ -34,7 +34,7 @@ void coil_top(float height, Model* top)
     
     
     glEnable(GL_TEXTURE_2D);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
 }
 
@@ -60,10 +60,10 @@ void wire_ring(float radius, int segments, float *x, float *y, float *z) {
 // turn_angle:  a number representing how quickly each spiral moves up
 void coil_primary(float start_radius, float wire_dia, float num_turns, float turn_distance, float turn_angle)
 {
-    // Material Color
     glDisable(GL_TEXTURE_2D);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, copper);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, copper);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 10);
+    glColor3f(1.0, 0.49803, 0.0);  // Copper
     
     // These variables are increased as a function of the angle
     float hoff;  //Horizontal Offset
@@ -133,6 +133,7 @@ void coil_primary(float start_radius, float wire_dia, float num_turns, float tur
         
 
     }
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
 }
 
 
@@ -146,6 +147,7 @@ void secondary_coil(float radius, float height, GLuint texId)
     quad = gluNewQuadric();
     
     glBindTexture(GL_TEXTURE_2D, texId);
+    glColor3f(1, 1, 1);   // White
     gluQuadricTexture(quad, GLU_TRUE);
     gluQuadricOrientation(quad, GLU_OUTSIDE);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );

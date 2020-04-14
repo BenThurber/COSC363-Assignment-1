@@ -69,6 +69,7 @@
 		B5A0E138244550FE00973C14 /* tesla.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla.bmp; sourceTree = "<group>"; };
 		B5A0E1392445512300973C14 /* floor.off */ = {isa = PBXFileReference; lastKnownFileType = text; path = floor.off; sourceTree = "<group>"; };
 		B5A7953624443E0B0046B09E /* wood1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wood1.bmp; sourceTree = "<group>"; };
+		B5E8424E24459CD600C7A429 /* title.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = title.tga; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +116,7 @@
 				B59A601F243AA4B100602619 /* Fern.bmp */,
 				B59A601D243A984300602619 /* VaseTexture.bmp */,
 				B55685C5243D48700064A4EA /* copper_winding.tga */,
+				B5E8424E24459CD600C7A429 /* title.tga */,
 				B5A0E138244550FE00973C14 /* tesla.bmp */,
 				B5A7953624443E0B0046B09E /* wood1.bmp */,
 			);

@@ -74,8 +74,6 @@ void loadModels();
 // Make a ground plane that can be adjusted with macros
 void ground()
 {
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
     glBindTexture(GL_TEXTURE_2D, txId[GROUND]);
     
     // This variable makes things cleaner.  It calculates the number of tiles for the ground plane.
@@ -186,6 +184,7 @@ void initialise(void)
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100.0);
 
     glClearColor (1.0, 1.0, 1.0, 0.0);
+    glColor3f(1, 1, 1);
 
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity ();
@@ -229,29 +228,28 @@ void display(void)
 {
 	float lgt_pos[]={5.0f, 50.0f, 100.0f, 1.0f};  //light0 position
     
+    // Turn on coloring of materials
+    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+    glEnable(GL_COLOR_MATERIAL);
 
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	gluLookAt(eye_x, eye_y, eye_z, look_x, look_y, look_z, 0., 1., 0.);
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);    // For solid change GL_LINE to GL_FILL
 
 	glRotatef(angle, 0, 1, 0);		//Rotate the entire scene
 
 	glLightfv(GL_LIGHT0, GL_POSITION, lgt_pos);   //light position
     
-
-	glColor3f (0.0, 0.0, 1.0);    //Used for wireframe display
 	glEnable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_2D);
     
-    building(60, 20, 70, 60, 7, 6, txId, models);
     
     skybox(400, txId);
     ground();
     
-    
+    building(60, 20, 70, 60, 7, 6, txId, models);
     
     
     // Some random vase

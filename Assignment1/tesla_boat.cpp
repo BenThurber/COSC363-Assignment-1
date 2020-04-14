@@ -21,8 +21,6 @@
 #define BOB_FREQUENCY 4.8
 #define BOB_AMPLITUDE 0.3
 
-float boat_color[4] = {0.4500, 0.3098, 0.0, 1.0};
-
 static GLuint light;
 
 static double x = 0;        // Boat's x coord
@@ -31,10 +29,18 @@ static float delta_y = 0;   // The amount the boat 'bobs' up and down
 static int x_direction = 1;
 
 
+// Draw the headlight opn the boat
 void boat_spotlight()
 {
-    float light1_dir[] = {0, -1, 0};  //light1 direction
-    float light1_pos[] = {0, 2, 0, 1};  //light1 position
+    const float y=4.3, z=1.5;
+    float light1_dir[] = {0, -1, 1, 0};  //light1 direction
+    float light1_pos[] = {0, y, z, 1};  //light1 position
+    
+    // Draw a cube to mark where the light source is (for testing)
+    glPushMatrix();
+    glTranslatef(0, y, z);
+//    glutSolidCube(1);
+    glPopMatrix();
     
     glLightfv(light, GL_SPOT_DIRECTION, light1_dir);
     glLightfv(light, GL_POSITION, light1_pos);
@@ -45,8 +51,9 @@ void tesla_boat(Model* boat)
 {
     glDisable(GL_TEXTURE_2D);
     
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, boat_color);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, boat_color);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 25);
+    glColor3f(0.4500, 0.3098, 0.0);
     
     const float size = 1;
     const float height = 3;
@@ -58,14 +65,13 @@ void tesla_boat(Model* boat)
     glPushMatrix();
         glTranslated(x, height + delta_y, z);
         glRotatef(theta, 0, 1, 0);
-        glScalef(size, size, size);
         boat_spotlight();
+        glScalef(size, size, size);
+    
         drawModel(boat);
     glPopMatrix();
     
-    
-    glEnable(GL_TEXTURE_2D);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
 }
 
@@ -113,7 +119,7 @@ void boat_init_light(GLuint boat_light)
     glLightfv(light, GL_DIFFUSE, white);
     glLightfv(light, GL_SPECULAR, white);
     glLightf(light, GL_SPOT_CUTOFF, 30.0);
-    glLightf(light, GL_SPOT_EXPONENT, 0.01);
+    glLightf(light, GL_SPOT_EXPONENT, 50);
 }
 
 

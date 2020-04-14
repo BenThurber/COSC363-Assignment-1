@@ -26,11 +26,13 @@ void set_roof_vertex(float angle, float radius, float height, float height_offse
 // Function to build the roof
 void roof(float radius, float height, float angle, float thickness, int num_sides)
 {
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mat);
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mat);
+//    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+    glColor3f(1.0, 0.75, 0.5);  // Mat
     
+    glDisable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);  // Unbind Last bound texture
-    glColor3f(1.0, 0.498, 0.0);
+    
     float smaller_rad = radius - thickness*(1.0/tan(RAD(angle)));
     
     // Lower Base
@@ -71,6 +73,7 @@ void vertical_pillar(float height, float width, GLuint* textures)
     GLUquadric *quad;
     quad = gluNewQuadric();
     
+    glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, textures[WOOD1]);
     gluQuadricTexture(quad, GLU_TRUE);
     gluQuadricOrientation(quad, GLU_OUTSIDE);
@@ -104,9 +107,11 @@ void vertical_pillar(float height, float width, GLuint* textures)
 
 void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
 {
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
+//    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+    glColor3f(1, 1, 1);  // White
     
+    glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texId);
     
     glBegin(GL_QUAD_STRIP);
@@ -151,20 +156,20 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
 
 
 
-// Draw a floor only inside the museum
+// Draw a floor inside the museum
 void floor(float size, Model* model)
 {
     glEnable(GL_LIGHTING);
-//    glColor4f(0.7, 0.7, 0.7, 1.0);  //The floor is gray in colour
-//    glMaterialfv(GL_FRONT, GL_SPECULAR, black);  // Disable specular reflections
-//    glMaterialfv(GL_FRONT, GL_DIFFUSE, grey);
+    glDisable(GL_TEXTURE_2D);
+    glColor3f(0.784, 0.784, 0.784);  // Grey
+    glMaterialfv(GL_FRONT, GL_SPECULAR, black);  // Disable specular reflections
     
     glPushMatrix();
         glScalef(size, 1, size);
         drawModel(model);
     glPopMatrix();
     
-//    glMaterialfv(GL_FRONT, GL_SPECULAR, white);   //Reset specular reflections to white
+    glMaterialfv(GL_FRONT, GL_SPECULAR, white);   //Re-enable specular reflections to white
 }
 
 
@@ -172,6 +177,7 @@ void floor(float size, Model* model)
 // Create a 2D texture on a quad  pxl_w is pixel width
 void flat_image(float height, float pxl_w, float pxl_h, GLuint texId)
 {
+    glColor3f(1, 1, 1);  // White
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texId);
     

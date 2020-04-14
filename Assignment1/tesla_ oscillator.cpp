@@ -37,8 +37,9 @@ float normal_distribution(float x);
 void steel_bar(float width, float length, float end_length, int segments, float* deflection)
 {
     glDisable(GL_TEXTURE_2D);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, steel);
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, steel);
+//    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+    glColor3f(0.3, 0.3, 0.3);  // Steel color
     
     glPushMatrix();
     glTranslatef(-(length)/2, 0, 0);
@@ -122,8 +123,10 @@ void draw_end_bar(int N, float vz[N], float vy[N], float deflection, int segment
 void oscillator(float bar_width, float oscil_height, float deflection)
 {
     const float cube_size = bar_width * 3.3;
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mocha);
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mocha);
+//    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+    glDisable(GL_TEXTURE_2D);
+    glColor3f(0.5, 0.25, 0.0);  // Brown
     
     glPushMatrix();
         glTranslatef(0, bar_width + cube_size/2 + deflection, 0);
@@ -166,8 +169,9 @@ void oscillator_next_frame()
 // What the steel bar rests on
 void bar_mount(float bar_width, float bar_length, float bar_height, float cylinder_dia) {
     glDisable(GL_TEXTURE_2D);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
+//    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
+    glColor3f(1, 1, 1);  // White
     
     // The boxes at either end
     glPushMatrix();
