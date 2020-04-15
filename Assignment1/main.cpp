@@ -20,7 +20,7 @@
 #include "skybox.h"
 #include "tesla_coil.h"
 #include "tesla_boat.h"
-#include "tesla_ oscillator.h"
+#include "tesla_oscillator.h"
 
 #define GROUND_LENGTH 400
 #define GROUND_HEIGHT -0.01
@@ -47,17 +47,7 @@ float copper[4] = {1.0, 0.49803, 0.0, 1.0};
 float mocha[4] = {0.5, 0.25, 0.0, 1.0};
 
 
-const int N = 50;  // Total number of vertices on vase base curve
 
-float vx_init[N] = { 0, 8, 8, 7.5, 6.7, 5, 5.5, 4, 4, 5, 5.6, 6.1, 6.8, 7.1, 7.5, 8, 8.4, 8.7, 9, 9.3,
-                      9.8, 10, 10.2, 10.4, 10.6, 10.9, 11, 11.1, 11.2, 11.3, 11.4, 11.3, 11.2, 11.1, 11, 10.5, 9.5, 8.2, 7, 6.2,
-                      6, 6.2, 6.8, 7.6, 8.5, 7, 6.1, 5.3, 4.7, 4.5 };
-float vy_init[N] = { 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-                      19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
-                      39, 40, 41, 42, 43, 43, 42, 41, 40, 39 };
-float vz_init[N] = { 0 };
-
-float curve_lens[N];
 
 // Function Declarations------------------------------------
 void normal(float x1, float y1, float z1,
@@ -69,6 +59,23 @@ void loadModels();
 //--------------------------------------------------------------------------------
 
 
+// Define a cylynder function based on gluCylinder because glutSolidCylinder doesn't always work (maybe GLUT vs freeGLUT?)
+void cylinder(GLfloat radius, GLfloat height, GLfloat slices)
+{
+    GLUquadric* quad = gluNewQuadric();
+    
+    gluCylinder(quad, radius, radius, height, slices, 5);
+    glPushMatrix();
+        glTranslatef(0, 0, 0);
+        glScalef(1, 1, -1);
+        gluDisk(quad, 0, radius, slices, 3);
+    glPopMatrix();
+    glPushMatrix();
+        glTranslatef(0, 0, height);
+        gluDisk(quad, 0, radius, slices, 3);
+    glPopMatrix();
+}
+
 
 //--------------------------------------------------------------------------------
 // Make a ground plane that can be adjusted with macros
@@ -77,8 +84,7 @@ void ground()
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_LIGHTING);
     glMaterialfv(GL_FRONT, GL_SPECULAR, black);  // Disable specular reflections
-//    glBindTexture(GL_TEXTURE_2D, txId[GROUND]);
-    glBindTexture(GL_TEXTURE_2D, 0);
+    glBindTexture(GL_TEXTURE_2D, txId[GROUND]);
     glColor3f(1, 1, 1);
     
     // This variable makes things cleaner.  It calculates the number of tiles for the ground plane.
@@ -107,77 +113,6 @@ void ground()
     glMaterialfv(GL_FRONT, GL_SPECULAR, white);  // Disable specular reflections
 }
 
-
-//--------------------------------------------------------------------------------
-void vase()
-{
-    float vx[N], vy[N], vz[N];
-    float wx[N], wy[N], wz[N];
-    
-    for (int i = 0; i < N; i++)		//Initialize data everytime
-    {
-        vx[i] = vx_init[i];
-        vy[i] = vy_init[i];
-        vz[i] = vz_init[i];
-    }
-    
-    glBindTexture(GL_TEXTURE_2D, txId[VASE]);
-    
-    float theta;
-    int degrees;
-    int num_slices = 36;
-    for(int slice = 0; slice <= num_slices; slice++) {     //36 slices in 10 deg steps
-        
-        // Transform the initial coordinates from polar coordinates to cartesian coordinates, looping over theta
-        degrees = 360 * ((float)slice / num_slices);
-        theta = (M_PI / 180) * (degrees);
-        for(int i = 0; i < N; i++) {
-            wx[i] = vx_init[i] * cos(theta);
-            wy[i] = vy_init[i];
-            wz[i] = vx_init[i] * sin(theta);
-        }
-        
-        
-        glBegin(GL_TRIANGLE_STRIP);
-        
-        float tex_x1, tex_x2;
-        for (int i=0; i < N; i++) {
-            // Caluclate Normal Vector
-            if (i > 0) normal(vx[i-1], vy[i-1], vz[i-1], vx[i], vy[i], vz[i], wx[i-1], wy[i-1], wz[i-1]);
-            // Texture and Define Coordinates
-            tex_x1 = 1 - ((float) (slice-1) / num_slices);
-            tex_x2 = 1 - ((float) slice / num_slices);
-            glTexCoord2f(tex_x1, curve_lens[i] / curve_lens[N-1]);
-            glVertex3f(vx[i], vy[i], vz[i]);
-            glTexCoord2f(tex_x2, curve_lens[i] / curve_lens[N-1]);
-            glVertex3f(wx[i], wy[i], wz[i]);
-        }
-        
-        glEnd();
-        
-        
-        for(int i = 0; i < N; i++) {  //Copy W array to V for next iteration
-            vx[i] = wx[i];
-            vy[i] = wy[i];
-            vz[i] = wz[i];
-        }
-    }
-}
-
-
-
-//-------------------------------------------------------------------
-
-void precompute_vase_curve_len() {
-    // Precompute lengths of base curve to acuratley texture the curved surface of the model
-    float curve_len = 0;
-    curve_lens[0] = 0;
-    curve_lens[1] = 0;     // This initialization is done to skip the first curve segment which is the bottom of the vase and shouldn't be textured
-    for (int i=2; i < N; i++) {
-        curve_len += sqrt( pow(vx_init[i] - vx_init[i-1], 2) + pow(vy_init[i] - vy_init[i-1], 2) );
-        curve_lens[i] = curve_len;
-    }
-}
 
 //-------------------------------------------------------------------
 void initialise(void) 
@@ -213,7 +148,6 @@ void initialise(void)
 //    gluPerspective(40.0, 1.0, 20.0, 500.0);
 //    gluPerspective(45., 1., 1., 100.);
     
-    precompute_vase_curve_len();
     
 }
 //-------------------------------------------------------------------
@@ -280,12 +214,6 @@ void display(void)
     
     building(60, 20, 70, 60, 7, 6, txId, models);
     
-    
-    // Some random vase
-    glPushMatrix();
-    glTranslatef(0, 0, -75);    // Move Vase out of the way
-    vase();
-    glPopMatrix();
     
     
     // Tesla Coil Exhibit

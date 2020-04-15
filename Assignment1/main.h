@@ -30,6 +30,7 @@ extern float copper[4];
 extern float mocha[4];
 
 
+void cylinder(GLfloat radius, GLfloat height, GLfloat slices);
 
 
 #define RAD(x) (x * (M_PI / 180))

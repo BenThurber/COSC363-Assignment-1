@@ -51,7 +51,6 @@ void tesla_boat(Model* boat)
 {
     glDisable(GL_TEXTURE_2D);
     
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, boat_color);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 25);
     glColor3f(0.4500, 0.3098, 0.0);
     
@@ -71,7 +70,6 @@ void tesla_boat(Model* boat)
         drawModel(boat);
     glPopMatrix();
     
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
 }
 

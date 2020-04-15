@@ -22,7 +22,6 @@ void coil_top(float height, Model* top)
 {
     glDisable(GL_TEXTURE_2D);
 
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, silver);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 10);
     glColor3f(0.4, 0.4, 0.4);  // Silver
     
@@ -34,7 +33,6 @@ void coil_top(float height, Model* top)
     
     
     glEnable(GL_TEXTURE_2D);
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
 }
 
@@ -61,7 +59,6 @@ void wire_ring(float radius, int segments, float *x, float *y, float *z) {
 void coil_primary(float start_radius, float wire_dia, float num_turns, float turn_distance, float turn_angle)
 {
     glDisable(GL_TEXTURE_2D);
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, copper);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 10);
     glColor3f(1.0, 0.49803, 0.0);  // Copper
     

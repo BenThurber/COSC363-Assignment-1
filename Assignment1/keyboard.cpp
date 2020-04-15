@@ -71,7 +71,7 @@ void key_event_strict(unsigned char reg_key, int spec_key) {
     look_z = eye_z - cos(RAD(angle));
     look_y = eye_y + tan(RAD(vert_angle));
     
-    printf("eye_z=%f, look_z=%f\n", eye_z, look_z);
+//    printf("eye_z=%f, look_z=%f\n", eye_z, look_z);
     glutPostRedisplay();
 }
 
@@ -97,7 +97,7 @@ void key_event_custom(unsigned char reg_key, int spec_key) {
     look_z = eye_z - cos(RAD(angle));
     look_y = eye_y + tan(RAD(vert_angle));
     
-    printf("eye_z=%f, look_z=%f\n", eye_z, look_z);
+//    printf("eye_z=%f, look_z=%f\n", eye_z, look_z);
     glutPostRedisplay();
 }
 

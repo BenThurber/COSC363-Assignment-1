@@ -26,8 +26,6 @@ void set_roof_vertex(float angle, float radius, float height, float height_offse
 // Function to build the roof
 void roof(float radius, float height, float angle, float thickness, int num_sides)
 {
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, mat);
-//    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
     glColor3f(1.0, 0.75, 0.5);  // Mat
     
     glDisable(GL_TEXTURE_2D);
@@ -107,8 +105,6 @@ void vertical_pillar(float height, float width, GLuint* textures)
 
 void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
 {
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
-//    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100);
     glColor3f(1, 1, 1);  // White
     
     glEnable(GL_TEXTURE_2D);

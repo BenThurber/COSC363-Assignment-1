@@ -30,7 +30,7 @@ void loadBMP(char* filename, int mipmap_level)
     ifstream file( filename, ios::in | ios::binary);
 	if(!file)
 	{
-		cout << "*** Error opening image file: " << filename << endl;
+		cout << "No BMP image file named: " << filename << endl;
         return;
 	}
 	file.read (header1, 18);		//Initial part of header
@@ -40,7 +40,7 @@ void loadBMP(char* filename, int mipmap_level)
 	file.read ((char*)&bpp, 2);		//Bits per pixel
 	file.read (header2, 24);		//Remaining part of header
 
-		cout << "Width =" << wid << "   Height = " << hgt << " Bpp = " << bpp << endl;
+//		cout << "Width =" << wid << "   Height = " << hgt << " Bpp = " << bpp << endl;
 
 	nbytes = bpp / 8;           //No. of bytes per pixels
 	size = wid * hgt * nbytes;  //Total number of bytes to be read
@@ -90,7 +90,7 @@ void loadBMP(char* filename, int mipmap_level)
     strncat(new_filename, mipmap_str, strlen(mipmap_str));          // Concat number
     strncat(new_filename, c + num_len + 1, strlen(c + num_len));    // Concat file extension
     
-    printf("Level %d\n Old file: %s\n New file: %s\n\n", mipmap_level, filename, new_filename);
+//    printf("Level %d\n Old file: %s\n New file: %s\n\n", mipmap_level, filename, new_filename);
     loadBMP(new_filename, mipmap_level + 1);     // And call function again
     
     delete new_filename;

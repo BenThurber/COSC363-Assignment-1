@@ -25,7 +25,7 @@ void loadTGA(const char* filename)
     ifstream file( filename, ios::in | ios::binary);
 	if(!file)
 	{
-		cout << "*** Error opening image file: " << filename << endl;
+		cout << "*** Error opening TGA image file: " << filename << endl;
 		exit(1);
 	}
 	file.read (&id, 1);

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B50EF9B5243BC9CB0087B626 /* skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B50EF9B3243BC9CB0087B626 /* skybox.cpp */; };
-		B5240CA22442798100D9F8CC /* tesla_ oscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5240CA02442798100D9F8CC /* tesla_ oscillator.cpp */; };
+		B5240CA22442798100D9F8CC /* tesla_oscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5240CA02442798100D9F8CC /* tesla_oscillator.cpp */; };
 		B54488AE243FF55100BD6674 /* tesla_boat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54488AC243FF55100BD6674 /* tesla_boat.cpp */; };
 		B54C29F4243D72F500AF38DF /* loadOFF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54C29F2243D72F500AF38DF /* loadOFF.cpp */; };
 		B55685C8243D489C0064A4EA /* tesla_coil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55685C6243D489C0064A4EA /* tesla_coil.cpp */; };
@@ -34,8 +34,8 @@
 		B50EF9AF243BC7A10087B626 /* interior_wall.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = interior_wall.bmp; sourceTree = "<group>"; };
 		B50EF9B3243BC9CB0087B626 /* skybox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skybox.cpp; sourceTree = "<group>"; };
 		B50EF9B4243BC9CB0087B626 /* skybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skybox.h; sourceTree = "<group>"; };
-		B5240CA02442798100D9F8CC /* tesla_ oscillator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "tesla_ oscillator.cpp"; sourceTree = "<group>"; };
-		B5240CA12442798100D9F8CC /* tesla_ oscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "tesla_ oscillator.h"; sourceTree = "<group>"; };
+		B5240CA02442798100D9F8CC /* tesla_oscillator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tesla_oscillator.cpp; sourceTree = "<group>"; };
+		B5240CA12442798100D9F8CC /* tesla_oscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tesla_oscillator.h; sourceTree = "<group>"; };
 		B539A3842446AB1000F00BF3 /* copper_winding0.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding0.bmp; sourceTree = "<group>"; };
 		B539A3852446AB1000F00BF3 /* copper_winding1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding1.bmp; sourceTree = "<group>"; };
 		B539A3862446AB1000F00BF3 /* copper_winding2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding2.bmp; sourceTree = "<group>"; };
@@ -222,8 +222,8 @@
 				B590E6F5241F1C1B00F7B635 /* keyboard.h */,
 				B59A6022243ACD6A00602619 /* building.cpp */,
 				B59A6023243ACD6A00602619 /* building.h */,
-				B5240CA02442798100D9F8CC /* tesla_ oscillator.cpp */,
-				B5240CA12442798100D9F8CC /* tesla_ oscillator.h */,
+				B5240CA02442798100D9F8CC /* tesla_oscillator.cpp */,
+				B5240CA12442798100D9F8CC /* tesla_oscillator.h */,
 				B54488AC243FF55100BD6674 /* tesla_boat.cpp */,
 				B54488AD243FF55100BD6674 /* tesla_boat.h */,
 				B55685C6243D489C0064A4EA /* tesla_coil.cpp */,
@@ -311,7 +311,7 @@
 			files = (
 				B54488AE243FF55100BD6674 /* tesla_boat.cpp in Sources */,
 				B59A601E243A984300602619 /* main.cpp in Sources */,
-				B5240CA22442798100D9F8CC /* tesla_ oscillator.cpp in Sources */,
+				B5240CA22442798100D9F8CC /* tesla_oscillator.cpp in Sources */,
 				B54C29F4243D72F500AF38DF /* loadOFF.cpp in Sources */,
 				B59A6024243ACD6A00602619 /* building.cpp in Sources */,
 				B590E6F6241F1C1B00F7B635 /* keyboard.cpp in Sources */,
