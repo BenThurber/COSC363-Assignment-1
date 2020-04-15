@@ -74,7 +74,12 @@ void loadModels();
 // Make a ground plane that can be adjusted with macros
 void ground()
 {
-    glBindTexture(GL_TEXTURE_2D, txId[GROUND]);
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_LIGHTING);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, black);  // Disable specular reflections
+//    glBindTexture(GL_TEXTURE_2D, txId[GROUND]);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    glColor3f(1, 1, 1);
     
     // This variable makes things cleaner.  It calculates the number of tiles for the ground plane.
     int num_tiles = (float) GROUND_LENGTH / (float) GROUND_TEX_SIZE;
@@ -86,6 +91,20 @@ void ground()
     glTexCoord2f(num_tiles, 0);             glVertex3f(GROUND_LENGTH/2, GROUND_HEIGHT, GROUND_LENGTH/2);
     glTexCoord2f(num_tiles, num_tiles);     glVertex3f(GROUND_LENGTH/2, GROUND_HEIGHT, -GROUND_LENGTH/2);
     glEnd();
+    
+//    glBegin(GL_QUADS);
+//    for(int i = -200; i < 200; i++)
+//    {
+//        for(int j = -200;  j < 200; j++)
+//        {
+//            glVertex3f(i, GROUND_HEIGHT, j);
+//            glVertex3f(i, GROUND_HEIGHT, j+1);
+//            glVertex3f(i+1, GROUND_HEIGHT, j+1);
+//            glVertex3f(i+1, GROUND_HEIGHT, j);
+//        }
+//    }
+//    glEnd();
+    glMaterialfv(GL_FRONT, GL_SPECULAR, white);  // Disable specular reflections
 }
 
 
@@ -179,7 +198,7 @@ void initialise(void)
     
 	glEnable(GL_SMOOTH);
 
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, grey);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100.0);
 
@@ -188,7 +207,11 @@ void initialise(void)
 
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity ();
-    gluPerspective(40.0, 1.0, 20.0, 500.0);
+    const float nplane = 1.5;    // Near plane size
+    glFrustum(-nplane, nplane, -nplane, nplane, 3, 10000.0);   //Camera Frustum
+    
+//    gluPerspective(40.0, 1.0, 20.0, 500.0);
+//    gluPerspective(45., 1., 1., 100.);
     
     precompute_vase_curve_len();
     
@@ -245,9 +268,15 @@ void display(void)
 	glEnable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_2D);
     
+    glPushMatrix();
+        glTranslatef(eye_x, eye_y, eye_z);
+        skybox(800, txId);
+    glPopMatrix();
     
-    skybox(400, txId);
     ground();
+    
+    glPushMatrix();
+    glScalef(1, 1, 1);   // Scale everything in the scene except the ground and skybox
     
     building(60, 20, 70, 60, 7, 6, txId, models);
     
@@ -261,14 +290,14 @@ void display(void)
     
     // Tesla Coil Exhibit
     glPushMatrix();
-        glTranslatef(37, 3, -22);
+        glTranslatef(37, 0, -22);
         glPushMatrix();
             glTranslatef(0, -2, 0);
             glRotatef(120, 0, 1, 0);
-            glScalef(1, 0.8, 1);
-            glutSolidCube(5);        // Put Tesla coil on a box
+            glScalef(3, 0.8, 3);
+//            glutSolidCube(5);        // Put Tesla coil on a box
         glPopMatrix();
-        glScalef(0.2, 0.2, 0.2);
+        glScalef(0.6, 0.6, 0.6);
         tesla_coil(txId[COPPER_COIL], models);
     glPopMatrix();
     
@@ -288,7 +317,8 @@ void display(void)
         tesla_oscillator(0.3, 20, 5, 20);
     glPopMatrix();
     
-
+    
+    glPopMatrix();
 	glFlush();
 }
 
@@ -320,7 +350,7 @@ int main(int argc, char** argv)
     glutInitDisplayMode (GLUT_SINGLE| GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize (800, 800);
     glutInitWindowPosition (1800, 0);
-    glutCreateWindow ("Vase");
+    glutCreateWindow ("Nikola Tesla Museum");
     glutTimerFunc(REFRESH_PERIOD, animationTimer, 0);
     
     initialise ();
@@ -367,8 +397,8 @@ void loadTextures()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[OUTER_WALL]);		//Use this texture
-    loadBMP((char*)"metal panels generic.bmp", 0);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    loadBMP((char*)"outer_wall0.bmp", 0);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
@@ -378,9 +408,10 @@ void loadTextures()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
+    // Uses mipmaps
     glBindTexture(GL_TEXTURE_2D, txId[COPPER_COIL]);		//Use this texture
-    loadTGA((char*)"copper_winding.tga");
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
+    loadBMP((char*)"copper_winding0.bmp", 0);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
@@ -390,16 +421,16 @@ void loadTextures()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
+    // Uses mipmaps
     glBindTexture(GL_TEXTURE_2D, txId[PORTRAIT]);		//Use this texture
     loadBMP((char*)"tesla0.bmp", 0);
-//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,  GL_GENERATE_MIPMAP, 7);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     
     glBindTexture(GL_TEXTURE_2D, txId[TITLE]);		//Use this texture
-    loadTGA((char*)"title.tga");
+    loadBMP((char*)"title.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);

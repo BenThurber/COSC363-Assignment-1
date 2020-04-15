@@ -122,7 +122,7 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
         wy = 0;
     
     
-        for (int angle=120, i=0; angle <= 420; angle += INC_ANGLE, i++) {
+        for (int angle=120, i=0; angle <= 420; angle += INC_ANGLE, i += 4) {
             vx = wx = wall_radius * cos(RAD(angle));
             vz = wz = wall_radius * sin(RAD(angle));
             

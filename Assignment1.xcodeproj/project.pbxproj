@@ -32,19 +32,42 @@
 
 /* Begin PBXFileReference section */
 		B50EF9AF243BC7A10087B626 /* interior_wall.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = interior_wall.bmp; sourceTree = "<group>"; };
-		B50EF9B0243BC7A10087B626 /* metal panels generic.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "metal panels generic.bmp"; sourceTree = "<group>"; };
 		B50EF9B3243BC9CB0087B626 /* skybox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skybox.cpp; sourceTree = "<group>"; };
 		B50EF9B4243BC9CB0087B626 /* skybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skybox.h; sourceTree = "<group>"; };
 		B5240CA02442798100D9F8CC /* tesla_ oscillator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "tesla_ oscillator.cpp"; sourceTree = "<group>"; };
 		B5240CA12442798100D9F8CC /* tesla_ oscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "tesla_ oscillator.h"; sourceTree = "<group>"; };
+		B539A3842446AB1000F00BF3 /* copper_winding0.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding0.bmp; sourceTree = "<group>"; };
+		B539A3852446AB1000F00BF3 /* copper_winding1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding1.bmp; sourceTree = "<group>"; };
+		B539A3862446AB1000F00BF3 /* copper_winding2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding2.bmp; sourceTree = "<group>"; };
+		B539A3872446AB1000F00BF3 /* copper_winding3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding3.bmp; sourceTree = "<group>"; };
+		B539A3882446AB1000F00BF3 /* copper_winding4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding4.bmp; sourceTree = "<group>"; };
+		B539A3892446AB1000F00BF3 /* copper_winding5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding5.bmp; sourceTree = "<group>"; };
+		B539A38A2446AB1000F00BF3 /* copper_winding6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding6.bmp; sourceTree = "<group>"; };
+		B539A38B2446AB1000F00BF3 /* copper_winding7.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding7.bmp; sourceTree = "<group>"; };
+		B539A38C2446AB1000F00BF3 /* copper_winding8.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = copper_winding8.bmp; sourceTree = "<group>"; };
+		B539A39B2446AD2600F00BF3 /* title.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = title.bmp; sourceTree = "<group>"; };
+		B539A39D2446CA0A00F00BF3 /* outer_wall0.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall0.bmp; sourceTree = "<group>"; };
+		B539A39E2446CA0A00F00BF3 /* outer_wall1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall1.bmp; sourceTree = "<group>"; };
+		B539A39F2446CA0A00F00BF3 /* outer_wall2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall2.bmp; sourceTree = "<group>"; };
+		B539A3A02446CA0A00F00BF3 /* outer_wall3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall3.bmp; sourceTree = "<group>"; };
+		B539A3A12446CA0A00F00BF3 /* outer_wall4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall4.bmp; sourceTree = "<group>"; };
+		B539A3A22446CA0A00F00BF3 /* outer_wall5.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall5.bmp; sourceTree = "<group>"; };
+		B539A3A32446CA0A00F00BF3 /* outer_wall6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall6.bmp; sourceTree = "<group>"; };
+		B539A3A42446CA0A00F00BF3 /* outer_wall7.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall7.bmp; sourceTree = "<group>"; };
+		B539A3A52446CA0A00F00BF3 /* outer_wall8.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall8.bmp; sourceTree = "<group>"; };
+		B539A3A62446CA0A00F00BF3 /* outer_wall9.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall9.bmp; sourceTree = "<group>"; };
+		B539A3A72446CA0A00F00BF3 /* outer_wall10.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = outer_wall10.bmp; sourceTree = "<group>"; };
+		B539A3A82446CA7600F00BF3 /* tesla7.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla7.bmp; sourceTree = "<group>"; };
+		B539A3A92446CA7600F00BF3 /* tesla8.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla8.bmp; sourceTree = "<group>"; };
+		B539A3AA2446CA7600F00BF3 /* tesla9.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla9.bmp; sourceTree = "<group>"; };
+		B539A3AB2446CA7600F00BF3 /* tesla10.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla10.bmp; sourceTree = "<group>"; };
+		B539A3AC2446CACC00F00BF3 /* tesla0.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla0.bmp; sourceTree = "<group>"; };
 		B54488AB243F45FA00BD6674 /* remote_boat.off */ = {isa = PBXFileReference; lastKnownFileType = text; path = remote_boat.off; sourceTree = "<group>"; };
 		B54488AC243FF55100BD6674 /* tesla_boat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tesla_boat.cpp; sourceTree = "<group>"; };
 		B54488AD243FF55100BD6674 /* tesla_boat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tesla_boat.h; sourceTree = "<group>"; };
 		B54C29F2243D72F500AF38DF /* loadOFF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = loadOFF.cpp; sourceTree = "<group>"; };
 		B54C29F3243D72F500AF38DF /* loadOFF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loadOFF.h; sourceTree = "<group>"; };
-		B54C29FB243D7DEF00AF38DF /* Cannon.off */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cannon.off; sourceTree = "<group>"; };
 		B54C29FC243D7DF400AF38DF /* coil_top.off */ = {isa = PBXFileReference; lastKnownFileType = text; path = coil_top.off; sourceTree = "<group>"; };
-		B55685C5243D48700064A4EA /* copper_winding.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = copper_winding.tga; sourceTree = "<group>"; };
 		B55685C6243D489C0064A4EA /* tesla_coil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tesla_coil.cpp; sourceTree = "<group>"; };
 		B55685C7243D489C0064A4EA /* tesla_coil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tesla_coil.h; sourceTree = "<group>"; };
 		B590E6E6241F04F900F7B635 /* loadTGA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loadTGA.h; sourceTree = "<group>"; };
@@ -59,16 +82,13 @@
 		B59869692415B3E800CB409A /* Assignment1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Assignment1; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59869732415B52700CB409A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		B59A601B243A984300602619 /* loadBMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loadBMP.h; sourceTree = "<group>"; };
-		B59A601C243A984300602619 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B59A601C243A984300602619 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 3; };
 		B59A601D243A984300602619 /* VaseTexture.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = VaseTexture.bmp; sourceTree = "<group>"; };
-		B59A601F243AA4B100602619 /* Fern.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Fern.bmp; sourceTree = "<group>"; };
 		B59A6020243AA7BD00602619 /* grass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = grass.bmp; sourceTree = "<group>"; };
 		B59A6021243ACC6400602619 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		B59A6022243ACD6A00602619 /* building.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = building.cpp; sourceTree = "<group>"; };
 		B59A6023243ACD6A00602619 /* building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = building.h; sourceTree = "<group>"; };
-		B5A0E138244550FE00973C14 /* tesla0.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla0.bmp; sourceTree = "<group>"; };
 		B5A0E1392445512300973C14 /* floor.off */ = {isa = PBXFileReference; lastKnownFileType = text; path = floor.off; sourceTree = "<group>"; };
-		B5E8424E24459CD600C7A429 /* title.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = title.tga; sourceTree = "<group>"; };
 		B5EC202A2445D34400C03667 /* wood_dark.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wood_dark.bmp; sourceTree = "<group>"; };
 		B5EC202C2445DD9600C03667 /* tesla1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla1.bmp; sourceTree = "<group>"; };
 		B5EC202D2445DD9600C03667 /* tesla2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = tesla2.bmp; sourceTree = "<group>"; };
@@ -101,13 +121,46 @@
 			name = libraries;
 			sourceTree = "<group>";
 		};
+		B539A3832446AAEE00F00BF3 /* copper_winding_mipmap */ = {
+			isa = PBXGroup;
+			children = (
+				B539A3842446AB1000F00BF3 /* copper_winding0.bmp */,
+				B539A3852446AB1000F00BF3 /* copper_winding1.bmp */,
+				B539A3862446AB1000F00BF3 /* copper_winding2.bmp */,
+				B539A3872446AB1000F00BF3 /* copper_winding3.bmp */,
+				B539A3882446AB1000F00BF3 /* copper_winding4.bmp */,
+				B539A3892446AB1000F00BF3 /* copper_winding5.bmp */,
+				B539A38A2446AB1000F00BF3 /* copper_winding6.bmp */,
+				B539A38B2446AB1000F00BF3 /* copper_winding7.bmp */,
+				B539A38C2446AB1000F00BF3 /* copper_winding8.bmp */,
+			);
+			name = copper_winding_mipmap;
+			sourceTree = "<group>";
+		};
+		B539A39C2446AD3000F00BF3 /* outer_wall_mipmap */ = {
+			isa = PBXGroup;
+			children = (
+				B539A39D2446CA0A00F00BF3 /* outer_wall0.bmp */,
+				B539A39E2446CA0A00F00BF3 /* outer_wall1.bmp */,
+				B539A39F2446CA0A00F00BF3 /* outer_wall2.bmp */,
+				B539A3A02446CA0A00F00BF3 /* outer_wall3.bmp */,
+				B539A3A12446CA0A00F00BF3 /* outer_wall4.bmp */,
+				B539A3A22446CA0A00F00BF3 /* outer_wall5.bmp */,
+				B539A3A32446CA0A00F00BF3 /* outer_wall6.bmp */,
+				B539A3A42446CA0A00F00BF3 /* outer_wall7.bmp */,
+				B539A3A52446CA0A00F00BF3 /* outer_wall8.bmp */,
+				B539A3A62446CA0A00F00BF3 /* outer_wall9.bmp */,
+				B539A3A72446CA0A00F00BF3 /* outer_wall10.bmp */,
+			);
+			name = outer_wall_mipmap;
+			sourceTree = "<group>";
+		};
 		B54C29FA243D7DE500AF38DF /* models */ = {
 			isa = PBXGroup;
 			children = (
 				B5A0E1392445512300973C14 /* floor.off */,
 				B54488AB243F45FA00BD6674 /* remote_boat.off */,
 				B54C29FC243D7DF400AF38DF /* coil_top.off */,
-				B54C29FB243D7DEF00AF38DF /* Cannon.off */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -115,16 +168,15 @@
 		B590E6E9241F06EF00F7B635 /* texture_files */ = {
 			isa = PBXGroup;
 			children = (
+				B539A39C2446AD3000F00BF3 /* outer_wall_mipmap */,
+				B539A3832446AAEE00F00BF3 /* copper_winding_mipmap */,
 				B5EC202B2445DD7E00C03667 /* tesla_mipmap */,
 				B590E6F7241F2F6C00F7B635 /* skybox */,
 				B50EF9AF243BC7A10087B626 /* interior_wall.bmp */,
-				B50EF9B0243BC7A10087B626 /* metal panels generic.bmp */,
+				B539A39B2446AD2600F00BF3 /* title.bmp */,
 				B59A6020243AA7BD00602619 /* grass.bmp */,
-				B59A601F243AA4B100602619 /* Fern.bmp */,
 				B59A601D243A984300602619 /* VaseTexture.bmp */,
 				B5EC202A2445D34400C03667 /* wood_dark.bmp */,
-				B55685C5243D48700064A4EA /* copper_winding.tga */,
-				B5E8424E24459CD600C7A429 /* title.tga */,
 			);
 			name = texture_files;
 			sourceTree = "<group>";
@@ -186,13 +238,17 @@
 		B5EC202B2445DD7E00C03667 /* tesla_mipmap */ = {
 			isa = PBXGroup;
 			children = (
+				B539A3AC2446CACC00F00BF3 /* tesla0.bmp */,
 				B5EC202C2445DD9600C03667 /* tesla1.bmp */,
 				B5EC202D2445DD9600C03667 /* tesla2.bmp */,
 				B5EC202E2445DD9600C03667 /* tesla3.bmp */,
 				B5EC202F2445DD9600C03667 /* tesla4.bmp */,
 				B5EC20302445DD9600C03667 /* tesla5.bmp */,
 				B5EC20312445DD9600C03667 /* tesla6.bmp */,
-				B5A0E138244550FE00973C14 /* tesla0.bmp */,
+				B539A3A82446CA7600F00BF3 /* tesla7.bmp */,
+				B539A3A92446CA7600F00BF3 /* tesla8.bmp */,
+				B539A3AA2446CA7600F00BF3 /* tesla9.bmp */,
+				B539A3AB2446CA7600F00BF3 /* tesla10.bmp */,
 			);
 			name = tesla_mipmap;
 			sourceTree = "<group>";

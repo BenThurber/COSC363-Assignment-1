@@ -17,6 +17,16 @@
 // Use the key bindings outlined in the assignment
 #define STRICT false
 
+// Use the implementaion that is likley free of bugs, but worse functionality
+#define SAFE_KEYBOARD false
+
+
+
+
+
+
+#if !SAFE_KEYBOARD    // Use this code if SAFE_KEYBOARD is false
+
 
 // Movement Speeds
 #define MODIFY 2
@@ -115,6 +125,51 @@ void reg_key_event(unsigned char key, int x, int y)
 
 
 
+
+
+#else    // Use this code if SAFE_KEYBOARD is true
+
+
+
+#define MODIFY 2
+//#define LOOK_UP_DOWN (2 * MODIFY)
+#define LOOK_LEFT_RIGHT (0.1 * MODIFY)
+//#define MOVE_LEFT_RIGHT (2.5 * MODIFY)
+#define FORWARD_BACK (2 * MODIFY)
+//#define MOVE_UP_DOWN (3.5 * MODIFY)
+
+
+
+void spec_key_event(int key, int x, int y)
+{
+    if(key == GLUT_KEY_LEFT) angle -= LOOK_LEFT_RIGHT;  //Change direction
+    else if(key == GLUT_KEY_RIGHT) angle += LOOK_LEFT_RIGHT;
+    else if(key == GLUT_KEY_DOWN)
+    {  //Move backward
+        eye_x -= FORWARD_BACK*sin(angle);
+        eye_z += FORWARD_BACK*cos(angle);
+    }
+    else if(key == GLUT_KEY_UP)
+    { //Move forward
+        eye_x += FORWARD_BACK*sin(angle);
+        eye_z -= FORWARD_BACK*cos(angle);
+    }
+    
+    look_x = eye_x + 100*sin(angle);
+    look_z = eye_z - 100*cos(angle);
+    glutPostRedisplay();
+}
+
+
+void reg_key_event(unsigned char key, int x, int y)
+{
+    
+}
+
+
+
+
+#endif
 
 
 

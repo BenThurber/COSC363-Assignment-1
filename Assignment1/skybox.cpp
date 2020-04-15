@@ -63,31 +63,6 @@ void draw_side(float l) {
 }
 
 
-//void skybox(int size, GLuint* textures)
-//{
-//    glDisable(GL_LIGHTING);
-//    glColor3d(1, 1, 1);
-//    
-//    GLUquadric *quad;
-//    quad = gluNewQuadric();
-//    
-//    glBindTexture(GL_TEXTURE_2D, true);
-//    gluQuadricTexture(quad, textures[SKY_RIGHT]);
-//    gluQuadricOrientation(quad, GLU_INSIDE);
-//    
-//    glutSolidCube(10);
-//    
-//    glPushMatrix();
-//        glTranslatef(0, -size/2, 0);
-//        glScalef(1, -1, 1);
-//        glRotatef(90, 1, 0, 0);
-//        gluCylinder(quad, size, size, size, 4, size);
-//    glPopMatrix();
-//    
-//    glEnable(GL_LIGHTING);
-//}
-
-
 
 
 
