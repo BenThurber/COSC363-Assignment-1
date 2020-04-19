@@ -70,6 +70,7 @@
 		B54C29FC243D7DF400AF38DF /* coil_top.off */ = {isa = PBXFileReference; lastKnownFileType = text; path = coil_top.off; sourceTree = "<group>"; };
 		B55685C6243D489C0064A4EA /* tesla_coil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tesla_coil.cpp; sourceTree = "<group>"; };
 		B55685C7243D489C0064A4EA /* tesla_coil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tesla_coil.h; sourceTree = "<group>"; };
+		B5573B56244C21AC00CBFFF5 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = CMakeLists.txt; path = Assignment1/CMakeLists.txt; sourceTree = "<group>"; };
 		B590E6E6241F04F900F7B635 /* loadTGA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loadTGA.h; sourceTree = "<group>"; };
 		B590E6F4241F1C1B00F7B635 /* keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keyboard.cpp; sourceTree = "<group>"; };
 		B590E6F5241F1C1B00F7B635 /* keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keyboard.h; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 			children = (
 				B59869732415B52700CB409A /* OpenGL.framework */,
 				B598696B2415B3E800CB409A /* Assignment1 */,
+				B5573B56244C21AC00CBFFF5 /* CMakeLists.txt */,
 				B598696A2415B3E800CB409A /* Products */,
 			);
 			sourceTree = "<group>";

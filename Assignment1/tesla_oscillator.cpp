@@ -27,7 +27,7 @@ static double t2 = -NORMAL_DIST_DOM;
 
 
 // Function Declarations
-void draw_end_bar(int N, float vz[N], float vy[N], float deflection, int segments, float end_length);
+void draw_end_bar(int N, float vz[], float vy[], float deflection, int segments, float end_length);
 float normal_distribution(float x);
 //----------------------
 
@@ -100,7 +100,7 @@ void steel_bar(float width, float length, float end_length, int segments, float*
 }
 
 // Draw a section of the steel bar that is to the left of the bar_mount
-void draw_end_bar(int N, float vz[N], float vy[N], float deflection, int segments, float end_length) {
+void draw_end_bar(int N, float vz[], float vy[], float deflection, int segments, float end_length) {
     float delta_y;
     glBegin(GL_QUAD_STRIP);
     for (int i=0, k=0; i < (N + 1); i++, k=(i % N)) {

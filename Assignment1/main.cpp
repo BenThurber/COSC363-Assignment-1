@@ -98,18 +98,7 @@ void ground()
     glTexCoord2f(num_tiles, num_tiles);     glVertex3f(GROUND_LENGTH/2, GROUND_HEIGHT, -GROUND_LENGTH/2);
     glEnd();
     
-//    glBegin(GL_QUADS);
-//    for(int i = -200; i < 200; i++)
-//    {
-//        for(int j = -200;  j < 200; j++)
-//        {
-//            glVertex3f(i, GROUND_HEIGHT, j);
-//            glVertex3f(i, GROUND_HEIGHT, j+1);
-//            glVertex3f(i+1, GROUND_HEIGHT, j+1);
-//            glVertex3f(i+1, GROUND_HEIGHT, j);
-//        }
-//    }
-//    glEnd();
+
     glMaterialfv(GL_FRONT, GL_SPECULAR, white);  // Disable specular reflections
 }
 
@@ -301,7 +290,7 @@ int main(int argc, char** argv)
 //--------------------------------------------------------------------------------
 void loadTextures()
 {
-    char* sky_files[6] = {"right.tga", "front.tga", "left.tga", "back.tga", "top.tga", "bottom.tga"};
+    const char* sky_files[6] = {"right.tga", "front.tga", "left.tga", "back.tga", "top.tga", "bottom.tga"};
     
     glGenTextures(NUM_TEXTURES, txId); 				// Create a Texture object
     glEnable(GL_TEXTURE_2D);
@@ -314,51 +303,51 @@ void loadTextures()
     }
     
     glBindTexture(GL_TEXTURE_2D, txId[VASE]);		//Use this texture
-    loadBMP((char*)"VaseTexture.bmp", 0);
+    loadBMP("VaseTexture.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
     glBindTexture(GL_TEXTURE_2D, txId[GROUND]);		//Use this texture
-    loadBMP((char*)"grass.bmp", 0);
+    loadBMP("grass.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[OUTER_WALL]);		//Use this texture
-    loadBMP((char*)"outer_wall0.bmp", 0);
+    loadBMP("outer_wall0.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[INNER_WALL]);		//Use this texture
-    loadBMP((char*)"interior_wall.bmp", 0);
+    loadBMP("interior_wall.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     // Uses mipmaps
     glBindTexture(GL_TEXTURE_2D, txId[COPPER_COIL]);		//Use this texture
-    loadBMP((char*)"copper_winding0.bmp", 0);
+    loadBMP("copper_winding0.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[WOOD_DARK]);		//Use this texture
-    loadBMP((char*)"wood_dark.bmp", 0);
+    loadBMP("wood_dark.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     // Uses mipmaps
     glBindTexture(GL_TEXTURE_2D, txId[PORTRAIT]);		//Use this texture
-    loadBMP((char*)"tesla0.bmp", 0);
+    loadBMP("tesla0.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,  GL_GENERATE_MIPMAP, 7);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     
     glBindTexture(GL_TEXTURE_2D, txId[TITLE]);		//Use this texture
-    loadBMP((char*)"title.bmp", 0);
+    loadBMP("title.bmp", 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);

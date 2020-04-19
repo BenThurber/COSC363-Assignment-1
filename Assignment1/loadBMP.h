@@ -20,7 +20,7 @@
 #include <GL/freeglut.h>
 using namespace std;
 
-void loadBMP(char* filename, int mipmap_level)
+void loadBMP(const char* filename, int mipmap_level)
 {
     char* imageData;
 	char header1[18], header2[24];
@@ -62,7 +62,7 @@ void loadBMP(char* filename, int mipmap_level)
     
     // Try to open the next mipmap recursivley >:)
     char* new_filename = NULL;
-    char* c = strrchr(filename, '.') - 1;     // The last character of the filename before the dot
+    const char* c = strrchr(filename, '.') - 1;     // The last character of the filename before the dot
     
     int num_len = 0;
     while (*c >= '0' && *c <= '9' && c > new_filename) {   // Itterate backwards in the filename
