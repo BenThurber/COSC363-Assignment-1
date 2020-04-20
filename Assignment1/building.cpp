@@ -55,9 +55,9 @@ void roof(float radius, float height, float angle, float thickness, int num_side
     glBegin(GL_QUAD_STRIP);
     for (int angle=0; angle <= 360; angle += INC_ANGLE) {
         if (angle > 0) normal(
-                              radius * cos(RAD(angle)), height, radius * sin(RAD(angle)),
+                              smaller_rad * cos(RAD(angle - INC_ANGLE)), height+thickness, smaller_rad * sin(RAD(angle - INC_ANGLE)),
                               smaller_rad * cos(RAD(angle)), height+thickness, smaller_rad * sin(RAD(angle)),
-                              smaller_rad * cos(RAD(angle - INC_ANGLE)), height+thickness, smaller_rad * sin(RAD(angle - INC_ANGLE)));
+                              radius * cos(RAD(angle)), height, radius * sin(RAD(angle)));
         set_roof_vertex(angle, radius, height, 0);
         set_roof_vertex(angle, smaller_rad, height, thickness);
     }
@@ -103,7 +103,7 @@ void vertical_pillar(float height, float width, GLuint* textures)
 //--------------------------------------------------------------------------------
 // Make walls
 
-void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
+void walls(float wall_radius, float wall_height, int num_sides, bool is_outer, GLuint texId)
 {
     glColor3f(1, 1, 1);  // White
     
@@ -124,7 +124,7 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
             
             // Left side entrance wall
             if (angle <= 120) {
-                glNormal3f(0, 0, 1);
+                glNormal3f(0, 0, is_outer);
                 glTexCoord2f(i-1, 1);
                 glVertex3f(vx + wall_radius/4, vy, vz);
                 glTexCoord2f(i-1, 0);
@@ -132,7 +132,11 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
             }
             
             // All other walls
-            normal(vx, vy, vz, wx, wy, wz, (wall_radius * cos(RAD(angle - INC_ANGLE))), 0, (wall_radius * sin(RAD(angle - INC_ANGLE))));
+            if (is_outer) {
+                normal(vx, vy, vz, wx, wy, wz, (wall_radius * cos(RAD(angle - INC_ANGLE))), 0, (wall_radius * sin(RAD(angle - INC_ANGLE))));
+            } else {
+                normal((wall_radius * cos(RAD(angle - INC_ANGLE))), 0, (wall_radius * sin(RAD(angle - INC_ANGLE))), wx, wy, wz, vx, vy, vz);
+            }
             glTexCoord2f(i, 1);
             glVertex3f(vx, vy, vz);
             glTexCoord2f(i, 0);
@@ -140,7 +144,7 @@ void walls(float wall_radius, float wall_height, int num_sides, GLuint texId)
             
             // Right side entrance wall
             if (angle >= 420) {
-                glNormal3f(0, 0, 1);
+                glNormal3f(0, 0, is_outer);
                 glTexCoord2f(i+1, 1);
                 glVertex3f(vx - wall_radius/4, vy, vz);
                 glTexCoord2f(i+1, 0);
@@ -202,13 +206,11 @@ void building(float wall_radius, float wall_height, float roof_radius, float roo
     floor(wall_radius, models[FLOOR]);
     
     roof(roof_radius, wall_height, roof_angle, roof_thickness, num_sides);
-    walls(wall_radius, wall_height, num_sides, textures[OUTER_WALL]);
     
-    // Create a slightly smaller inner wall.  Wall normals should now point inward.  Easier than creating a seperate function.
-    glPushMatrix();
-        glScalef(-1, 1, 1);
-        walls(0.99 * wall_radius, wall_height, num_sides, textures[INNER_WALL]);
-    glPopMatrix();
+    // Outer wall
+    walls(wall_radius, wall_height, num_sides, true, textures[OUTER_WALL]);
+    // Inner wall
+    walls(0.99 * wall_radius, wall_height, num_sides, false, textures[INNER_WALL]);
     
     // Create a door frame
     const int pillar_width = 2;

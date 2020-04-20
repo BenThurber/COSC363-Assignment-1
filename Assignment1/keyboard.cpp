@@ -34,7 +34,7 @@
 #define LOOK_LEFT_RIGHT (3.5 * MODIFY)
 #define MOVE_LEFT_RIGHT (2.5 * MODIFY)
 #define FORWARD_BACK (2 * MODIFY)
-#define MOVE_UP_DOWN (3.5 * MODIFY)
+#define MOVE_UP_DOWN (1.5 * MODIFY)
 
 
 //-----Movement-Functions---------------------------------------------------------
@@ -54,14 +54,14 @@ void move_down()      {eye_y -= MOVE_UP_DOWN; look_y -= MOVE_UP_DOWN;}
 
 //-----Event-Handlers-------------------------------------------------------------
 void key_event_strict(unsigned char reg_key, int spec_key) {
-    if     (reg_key == 'a' || spec_key == GLUT_KEY_LEFT)     look_left();
-    else if(reg_key == 'd' || spec_key == GLUT_KEY_RIGHT)    look_right();
-    else if(reg_key == 'A')                                  move_left();
-    else if(reg_key == 'D')                                  move_right();
-    else if(reg_key == 'W')                                  look_up();
-    else if(reg_key == 'S')                                  look_down();
-    else if(reg_key == 'w' || spec_key == GLUT_KEY_UP)       move_forwards();
-    else if(reg_key == 's' || spec_key == GLUT_KEY_DOWN)     move_backwards();
+    if     (spec_key == GLUT_KEY_LEFT)     look_left();
+    else if(spec_key == GLUT_KEY_RIGHT)    look_right();
+    else if(reg_key == 'a')                                  move_left();
+    else if(reg_key == 'd')                                  move_right();
+    else if(reg_key == 'w')                                  look_up();
+    else if(reg_key == 's')                                  look_down();
+    else if(spec_key == GLUT_KEY_UP)                         move_forwards();
+    else if(spec_key == GLUT_KEY_DOWN)                       move_backwards();
     else if(reg_key == ' ')                                  move_up();
     else if(reg_key == 'c')                                  move_down();
     else return;

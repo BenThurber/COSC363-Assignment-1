@@ -178,18 +178,16 @@ void display(void)
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
     glEnable(GL_COLOR_MATERIAL);
 
-	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	gluLookAt(eye_x, eye_y, eye_z, look_x, look_y, look_z, 0., 1., 0.);
-
-
-	glRotatef(angle, 0, 1, 0);		//Rotate the entire scene
-
-	glLightfv(GL_LIGHT0, GL_POSITION, lgt_pos);   //light position
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(eye_x, eye_y, eye_z, look_x, look_y, look_z, 0., 1., 0.);
     
-	glEnable(GL_LIGHTING);
-	glEnable(GL_TEXTURE_2D);
+
+    glLightfv(GL_LIGHT0, GL_POSITION, lgt_pos);   //light position
+
+    glEnable(GL_LIGHTING);
+    glEnable(GL_TEXTURE_2D);
     
     glPushMatrix();
         glTranslatef(eye_x, eye_y, eye_z);
