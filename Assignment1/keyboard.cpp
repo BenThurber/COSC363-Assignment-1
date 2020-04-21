@@ -15,9 +15,10 @@
 
 
 // Use the key bindings outlined in the assignment
-#define STRICT false
+static bool strict = true;
 
-// Use the implementaion that is likley free of bugs, but worse functionality
+// Use the implementaion that is likley free of bugs, but less functionality.
+// The default implementation is fixed, so this is no longer strictly nessesary
 #define SAFE_KEYBOARD false
 
 
@@ -71,7 +72,7 @@ void key_event_strict(unsigned char reg_key, int spec_key) {
     look_z = eye_z - cos(RAD(angle));
     look_y = eye_y + tan(RAD(vert_angle));
     
-//    printf("eye_z=%f, look_z=%f\n", eye_z, look_z);
+    //    printf("eye_z=%f, look_z=%f\n", eye_z, look_z);
     glutPostRedisplay();
 }
 
@@ -97,14 +98,14 @@ void key_event_custom(unsigned char reg_key, int spec_key) {
     look_z = eye_z - cos(RAD(angle));
     look_y = eye_y + tan(RAD(vert_angle));
     
-//    printf("eye_z=%f, look_z=%f\n", eye_z, look_z);
+    //    printf("eye_z=%f, look_z=%f\n", eye_z, look_z);
     glutPostRedisplay();
 }
 
 
 void spec_key_event(int key, int x, int y)
 {
-    if (STRICT) {
+    if (strict) {
         key_event_strict(0, key);
     } else {
         key_event_custom(0, key);
@@ -113,7 +114,9 @@ void spec_key_event(int key, int x, int y)
 
 void reg_key_event(unsigned char key, int x, int y)
 {
-    if (STRICT) {
+    if (key == 'T') {
+        strict = !strict;
+    } else if (strict) {
         key_event_strict(key, 0);
     } else {
         key_event_custom(key, 0);

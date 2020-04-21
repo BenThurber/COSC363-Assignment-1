@@ -52,7 +52,7 @@ void tesla_boat(Model* boat)
     glDisable(GL_TEXTURE_2D);
     
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 25);
-    glColor3f(0.4500, 0.3098, 0.0);
+    glColor3f(0.4500, 0.3098, 0.0);  // Bronze colour
     
     const float size = 1;
     const float height = 3;
@@ -77,6 +77,7 @@ void tesla_boat(Model* boat)
 // Increment and Decrement x between -1 and 1
 void inc_global_vars() {
     
+    // Derrivative of the figure of 8 equation
     long double dx = (pow(A,2) - 2*pow(x,2)) / (A*sqrt(pow(A,2) - pow(x,2)));
     double speed = 0.00001 + SPEED / (1.6 * fmaxl(fabsl(dx), 1.0));
     

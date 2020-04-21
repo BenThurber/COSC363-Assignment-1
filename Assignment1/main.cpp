@@ -34,7 +34,7 @@ using namespace std;
 GLuint txId[NUM_TEXTURES];
 Model* models[NUM_MODELS] = {NULL};
 
-float angle=0, vert_angle=0, eye_x=0, eye_y=8, eye_z=100, look_x=eye_x, look_y=eye_y, look_z=eye_z-1;  //Initial Camera parameters
+float angle=0, vert_angle=0, eye_x=0, eye_y=8, eye_z=160, look_x=eye_x, look_y=eye_y, look_z=eye_z-1;  //Initial Camera parameters
 
 // Colours----------------------------
 float grey[4] = {0.2, 0.2, 0.2, 1.0};
@@ -264,7 +264,7 @@ int main(int argc, char** argv)
     glutInit(&argc, argv);
     glutInitDisplayMode (GLUT_SINGLE| GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize (800, 800);
-    glutInitWindowPosition (1800, 0);
+    glutInitWindowPosition (0, 0);
     glutCreateWindow ("Nikola Tesla Museum");
     glutTimerFunc(REFRESH_PERIOD, animationTimer, 0);
     
