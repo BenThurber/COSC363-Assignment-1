@@ -22,7 +22,7 @@
 #include "tesla_boat.h"
 #include "tesla_oscillator.h"
 
-#define GROUND_LENGTH 400
+#define GROUND_LENGTH 800
 #define GROUND_HEIGHT -0.01
 #define GROUND_TEX_SIZE 40
 

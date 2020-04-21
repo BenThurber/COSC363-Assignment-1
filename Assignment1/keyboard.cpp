@@ -90,7 +90,7 @@ void key_event_custom(unsigned char reg_key, int spec_key) {
     else if(reg_key == 'w')                                  move_forwards();
     else if(reg_key == 's')                                  move_backwards();
     else if(reg_key == ' ')                                  move_up();
-    else if(reg_key == 'c' || reg_key == 'z')                move_down();
+    else if(reg_key == 'c')                                  move_down();
     else return;
     
     // Easier to adjust look coordinates outside of functions

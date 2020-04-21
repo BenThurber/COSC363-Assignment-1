@@ -22,7 +22,6 @@
 #define BOB_AMPLITUDE 0.3
 
 static GLuint light;
-
 static double x = 0;        // Boat's x coord
 static double theta = -90;  // Boat's angle along the curve
 static float delta_y = 0;   // The amount the boat 'bobs' up and down
@@ -81,18 +80,20 @@ void inc_global_vars() {
     long double dx = (pow(A,2) - 2*pow(x,2)) / (A*sqrt(pow(A,2) - pow(x,2)));
     double speed = 0.00001 + SPEED / (1.6 * fmaxl(fabsl(dx), 1.0));
     
+    
+    
     // The angle of the curve is the angle of the tangent vector
     theta = DEG((-1) * x_direction * atan(dx)) + x_direction*90;
     
     // Bob the boat up and down a little
     static int phi = 0;
-    phi = (phi + 1) % 360;
-    delta_y = BOB_AMPLITUDE * cos(RAD(BOB_FREQUENCY * phi));
+    phi++;
+    delta_y = BOB_AMPLITUDE * cos(RAD(fmod(BOB_FREQUENCY * phi, 360.0)));
     
-    if ( (x + (x_direction * speed)) > A) {
+    if ((x + (x_direction * speed)) > A) {
         x_direction = -1;
     }
-    else if ( (x + (x_direction * speed)) < -A) {
+    else if ((x + (x_direction * speed)) < -A) {
         x_direction = 1;
     }
         
