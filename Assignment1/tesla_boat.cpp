@@ -73,8 +73,9 @@ void tesla_boat(Model* boat)
 }
 
 
+// Move the boat to its next animation frame.  This should be called in each loop of a glutTimerFunc
 // Increment and Decrement x between -1 and 1
-void inc_global_vars() {
+void boat_next_frame() {
     
     // Derrivative of the figure of 8 equation
     long double dx = (pow(A,2) - 2*pow(x,2)) / (A*sqrt(pow(A,2) - pow(x,2)));
@@ -100,12 +101,6 @@ void inc_global_vars() {
     x = x + (x_direction * speed);
 }
 
-
-// Move the boat to its next animation frame.  This should be called in each loop of a glutTimerFunc
-void boat_next_frame()
-{
-    inc_global_vars();
-}
 
 
 // This goes in intitalize function in main

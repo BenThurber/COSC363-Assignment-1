@@ -147,17 +147,12 @@ float normal_distribution(float x) {
 }
 
 
+// Move to the next animation frame
 // Increment Global Variables
-void inc_glabal_vars()
+void oscillator_next_frame()
 {
     t1 += FREQUENCY;
     t2 = fmod((t2 + MAX_AMP_SPEED + NORMAL_DIST_DOM), 2*NORMAL_DIST_DOM) - NORMAL_DIST_DOM;
-}
-
-// Move to the next animation frame
-void oscillator_next_frame()
-{
-    inc_glabal_vars();
 }
 
 

@@ -55,10 +55,10 @@ void skybox(int size, GLuint* textures)
 void draw_side(float l) {
     float n = 0.002 * l;
     glBegin(GL_QUADS);
-    glTexCoord2f(0.0f, 0.0f);    glVertex3f(l-n, -l, -l);
-    glTexCoord2f(1.0f, 0.0f);    glVertex3f(l-n, -l,  l);
-    glTexCoord2f(1.0f, 1.0f);    glVertex3f(l-n,  l,  l);
-    glTexCoord2f(0.0f, 1.0f);    glVertex3f(l-n,  l, -l);
+        glTexCoord2f(0.0f, 0.0f);    glVertex3f(l-n, -l, -l);
+        glTexCoord2f(1.0f, 0.0f);    glVertex3f(l-n, -l,  l);
+        glTexCoord2f(1.0f, 1.0f);    glVertex3f(l-n,  l,  l);
+        glTexCoord2f(0.0f, 1.0f);    glVertex3f(l-n,  l, -l);
     glEnd();
 }
 

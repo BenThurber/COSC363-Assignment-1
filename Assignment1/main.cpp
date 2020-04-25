@@ -1,8 +1,9 @@
 //  ========================================================================
 //  COSC363: Computer Graphics (2020);  University of Canterbury.
 //
-//  FILE NAME: Vase.cpp
-//  See Lab04 (II) for details
+//  FILE NAME: main.cpp
+//  Assignment 1
+//  Ben Thurber
 //  ========================================================================
  
 #include <iostream>
@@ -19,6 +20,7 @@
 #include "building.h"
 #include "skybox.h"
 #include "tesla_coil.h"
+#include "lightning.h"
 #include "tesla_boat.h"
 #include "tesla_oscillator.h"
 
@@ -107,22 +109,23 @@ void ground()
 void initialise(void) 
 {
 
-	loadTextures();
+    loadTextures();
     loadModels();
 
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_NORMALIZE);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_NORMALIZE);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
     glLightfv(GL_LIGHT0, GL_AMBIENT, grey);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, white);
     glLightfv(GL_LIGHT0, GL_SPECULAR, white);
     
     boat_init_light(GL_LIGHT1);
+    init_lightning();
     
-	glEnable(GL_SMOOTH);
+    glEnable(GL_SMOOTH);
 
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, grey);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, grey);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, white);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 100.0);
 
@@ -159,6 +162,7 @@ void animationTimer(int value)
 {
     boat_next_frame();
     oscillator_next_frame();
+    lightning_next_frame();
     
     glutPostRedisplay();
     glutTimerFunc(REFRESH_PERIOD, animationTimer, 0);
@@ -196,26 +200,13 @@ void display(void)
     
     ground();
     
+    
     glPushMatrix();
     glScalef(1, 1, 1);   // Scale everything in the scene except the ground and skybox
     
     building(60, 20, 70, 60, 7, 6, txId, models);
     
-    
-    
-    // Tesla Coil Exhibit
-    glPushMatrix();
-        glTranslatef(37, 0, -22);
-        glPushMatrix();
-            glTranslatef(0, -2, 0);
-            glRotatef(120, 0, 1, 0);
-            glScalef(3, 0.8, 3);
-//            glutSolidCube(5);        // Put Tesla coil on a box
-        glPopMatrix();
-        glScalef(0.6, 0.6, 0.6);
-        tesla_coil(txId[COPPER_COIL], models);
-    glPopMatrix();
-    
+    lightning(txId);
     
     // Tesla Remote Control Boat Exhibit
     glPushMatrix();
@@ -231,6 +222,21 @@ void display(void)
         glRotatef(60, 0, 1, 0);
         tesla_oscillator(0.3, 20, 5, 20);
     glPopMatrix();
+    
+    
+    
+    // Tesla Coil Exhibit
+    glPushMatrix();
+        glTranslatef(37, 0, -22);
+        glScalef(0.4, 0.4, 0.4);
+        tesla_coil(txId[COPPER_COIL], models);
+        glPushMatrix();
+            glTranslatef(0, 24.5, 0);
+            glScalef(2.5, 2.5, 2.5);
+            lightning(txId);
+        glPopMatrix();
+    glPopMatrix();
+    
     
     
     glPopMatrix();
@@ -300,10 +306,11 @@ void loadTextures()
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     }
     
-    glBindTexture(GL_TEXTURE_2D, txId[VASE]);		//Use this texture
-    loadBMP("VaseTexture.bmp", 0);
+    glBindTexture(GL_TEXTURE_2D, txId[ELECTRICITY]);		//Use this texture
+    loadTGA("electricity.tga");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     
     glBindTexture(GL_TEXTURE_2D, txId[GROUND]);		//Use this texture
     loadBMP("grass.bmp", 0);
@@ -350,7 +357,7 @@ void loadTextures()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     
-    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 }
 
 

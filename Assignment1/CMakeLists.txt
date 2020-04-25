@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(assignment1)
 
-set(SOURCE_EXE main.cpp building.cpp keyboard.cpp loadOFF.cpp skybox.cpp tesla_boat.cpp tesla_coil.cpp tesla_oscillator.cpp)
+set(SOURCE_EXE main.cpp lightning.cpp building.cpp keyboard.cpp loadOFF.cpp skybox.cpp tesla_boat.cpp tesla_coil.cpp tesla_oscillator.cpp)
 
 
 find_package(OpenGL REQUIRED)

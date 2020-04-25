@@ -11,7 +11,6 @@
 #include <cmath>
 #include "main.h"
 #include "loadOFF.h"
-#include "building.h"
 #include "tesla_coil.h"
 
 

@@ -15,7 +15,7 @@ void normal(float x1, float y1, float z1,
             float x2, float y2, float z2,
             float x3, float y3, float z3 );
 
-enum textures {SKY_RIGHT, SKY_FRONT, SKY_LEFT, SKY_BACK, SKY_TOP, SKY_BOTTOM, VASE, GROUND, OUTER_WALL, INNER_WALL, COPPER_COIL, WOOD_DARK, PORTRAIT, TITLE, NUM_TEXTURES};
+enum textures {SKY_RIGHT, SKY_FRONT, SKY_LEFT, SKY_BACK, SKY_TOP, SKY_BOTTOM, VASE, GROUND, OUTER_WALL, INNER_WALL, COPPER_COIL, WOOD_DARK, PORTRAIT, ELECTRICITY, TITLE, NUM_TEXTURES};
 
 enum model_names {COIL_TOP, TESLA_BOAT, FLOOR, NUM_MODELS};
 
