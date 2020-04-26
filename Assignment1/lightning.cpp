@@ -43,9 +43,7 @@ void lightning(GLuint* textures)
     
     glPushMatrix();
     
-//    float angle = DEG(atan((eye_y-look_y) / (eye_x-look_x)));
-//    printf("ex=%f, ez=%f, lx=%f, lz=%f, \n", eye_x, eye_z, look_x, look_z);
-//    glRotatef(angle, 0, 1, 0);   // Use this to face the camera
+    glRotatef(180 - angle, 0, 1, 0);   // Uses this to face the billboard toward the camera
     
     // Draw each active particle
     PlasmaParticle* particle;
