@@ -42,11 +42,14 @@ void lightning(GLuint* textures)
     glBindTexture(GL_TEXTURE_2D, textures[ELECTRICITY]);
     
     glPushMatrix();
-    glRotatef(0, 0, 1, 0);   // Use this to face the camera
+    
+//    float angle = DEG(atan((eye_y-look_y) / (eye_x-look_x)));
+//    printf("ex=%f, ez=%f, lx=%f, lz=%f, \n", eye_x, eye_z, look_x, look_z);
+//    glRotatef(angle, 0, 1, 0);   // Use this to face the camera
     
     // Draw each active particle
     PlasmaParticle* particle;
-    float x, y, xtex, ytex, inc;
+    float x, y, xtex, ytex, inc, c=0.005;
     for (int i=0; i < N; i++) {
         particle = particles + i;
         x = X * particle->sx;
@@ -57,12 +60,13 @@ void lightning(GLuint* textures)
         ytex = (float)(particle->tex_num / SQRT_ARC_TEX) / SQRT_ARC_TEX;
         inc = 1.0 / SQRT_ARC_TEX;
         
+        
         glBegin(GL_QUADS);
         glNormal3f(0, 0, 1);
-        glTexCoord2f(xtex+inc, ytex    );   glVertex3f(x, 0, 0);
-        glTexCoord2f(xtex,     ytex    );   glVertex3f(0, 0, 0);
-        glTexCoord2f(xtex,     ytex+inc);   glVertex3f(0, y, 0);
-        glTexCoord2f(xtex+inc, ytex+inc);   glVertex3f(x, y, 0);
+        glTexCoord2f(xtex+inc-c, ytex+c    );   glVertex3f(x, 0, 0);
+        glTexCoord2f(xtex+c,     ytex+c    );   glVertex3f(0, 0, 0);
+        glTexCoord2f(xtex+c,     ytex+inc-c);   glVertex3f(0, y, 0);
+        glTexCoord2f(xtex+inc-c, ytex+inc-c);   glVertex3f(x, y, 0);
         
         glEnd();
         
