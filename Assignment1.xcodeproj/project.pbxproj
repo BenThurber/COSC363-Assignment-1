@@ -90,7 +90,6 @@
 		B59869732415B52700CB409A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		B59A601B243A984300602619 /* loadBMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loadBMP.h; sourceTree = "<group>"; };
 		B59A601C243A984300602619 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; tabWidth = 3; };
-		B59A601D243A984300602619 /* VaseTexture.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = VaseTexture.bmp; sourceTree = "<group>"; };
 		B59A6020243AA7BD00602619 /* grass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = grass.bmp; sourceTree = "<group>"; };
 		B59A6021243ACC6400602619 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		B59A6022243ACD6A00602619 /* building.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = building.cpp; sourceTree = "<group>"; };
@@ -184,7 +183,6 @@
 				B50EF9AF243BC7A10087B626 /* interior_wall.bmp */,
 				B539A39B2446AD2600F00BF3 /* title.bmp */,
 				B59A6020243AA7BD00602619 /* grass.bmp */,
-				B59A601D243A984300602619 /* VaseTexture.bmp */,
 				B5EC202A2445D34400C03667 /* wood_dark.bmp */,
 			);
 			name = texture_files;
