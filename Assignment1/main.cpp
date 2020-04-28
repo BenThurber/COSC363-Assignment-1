@@ -206,7 +206,6 @@ void display(void)
     
     building(60, 20, 70, 60, 7, 6, txId, models);
     
-    lightning(txId);
     
     // Tesla Remote Control Boat Exhibit
     glPushMatrix();

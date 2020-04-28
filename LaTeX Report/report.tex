@@ -195,7 +195,7 @@ The Tesla Coil is constructed in three parts (see figure).  The top piece is an 
 \includegraphics[height=6cm]{coil.png}   % Image
 \newline
 \newline
-\textbf{Feature: Particle System}\hspace{3mm} Each lightning ``bolt'' is drawn on a quad from Targa image file with an alpha channel.  There are 9 distinct lightning bolt graphics.  Instead of having separate files for each all are taken fro a single image file.  A struct that holds particle information such as lifespan and how quickly a particle grows or shrinks.  When a particle dies it re-spawns with new randomised values.
+\textbf{Feature: Particle System}\hspace{3mm} Each lightning ``bolt'' is drawn on a quad from Targa image file with an alpha channel.  There are 4 distinct lightning bolt graphics.  Instead of having separate files for each, all are taken from a single image file.  A struct holds particle information such as lifespan and how quickly a particle grows or shrinks.  When a particle dies it re-spawns with new randomised values.  There are 4 particles alive at any given time, but this could be increased to any given number.
 \newline
 \newline
 \textbf{Feature: Mathematical Formula}\hspace{3mm} The primary coil spiral is a circle (mathematically generated) quad strip that is swept around the origin at radius $r$ using the polar equation

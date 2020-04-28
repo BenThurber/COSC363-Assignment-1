@@ -13,9 +13,9 @@
 #include "rand_range.h"
 #include "lightning.h"
 
-#define A 1.7  // Overall Animation speed
+#define A 0.8  // Overall Animation speed
 #define DECAY_SPEED 0.04  // Overall decay speed after randomness
-#define X 5.0
+#define X 5.0     // Base dimensions of quad
 #define Y 5.0
 
 
@@ -24,7 +24,7 @@
 // NOTE, the textures for the arcs of lightning are taken from a single texture image.
 // The texture number (tex_num) is columns first then rows (left to right before goin to next row)
 // This macro defines the number of unique textures within the texture file and should be a square number
-#define NUM_ARC_TEX 9
+#define NUM_ARC_TEX 4
 #define SQRT_ARC_TEX ((int)sqrt(NUM_ARC_TEX))
 
 // Array of particles
@@ -81,19 +81,18 @@ void lightning(GLuint* textures)
 // Set reset life above 0 and give random parameters
 void reset_particle(PlasmaParticle* particle) {
     const float min_scale_speed = 0.001;
-    const float max_scale_speed = 0.035;
+    const float max_scale_speed = 0.020;
     const float min_scale_init = 0.7;
-    const float max_scale_init = 1.3;
+    const float max_scale_init = 1.1;
     const float min_life = 0.2;
-    const float max_life = 1.2;
+    const float max_life = 1.0;
     
-    particle->life = 1.0;
-    particle->sfx = rand_sign() * randf(min_scale_speed, max_scale_speed);
-    particle->sfy = rand_sign() * randf(min_scale_speed, max_scale_speed);
-    particle->sx =  rand_sign() * randf(min_scale_init, max_scale_init);
+    particle->sfx = rand_sign() * randf(min_scale_speed, max_scale_speed);  // Can be positive or negative
+    particle->sfy = rand_sign() * randf(min_scale_speed, max_scale_speed);  // Can be positive or negative
+    particle->sx =  rand_sign() * randf(min_scale_init, max_scale_init);    // Can be positive or negative
     particle->sy =                randf(min_scale_init, max_scale_init);
     particle->life =              randf(min_life, max_life);
-    particle->tex_num =           randi(0, NUM_ARC_TEX);
+    particle->tex_num =           randi(0, NUM_ARC_TEX-1);
     
 }
 
