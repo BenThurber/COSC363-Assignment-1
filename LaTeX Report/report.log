@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 APR 2020 19:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 APR 2020 19:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1077,7 +1077,7 @@ LaTeX Info: Redefining \nameref on input line 61.
 LaTeX Info: Redefining \selectfont on input line 61.
 
 ABD: EveryShipout initializing macros
-<building.jpg, id=7, 1590.94376pt x 985.6825pt>
+<building.jpg, id=67, 1590.94376pt x 985.6825pt>
 File: building.jpg Graphic file (type jpg)
  <use building.jpg>
 Package pdftex.def Info: building.jpg used on input line 90.
@@ -1126,7 +1126,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 134--136
 
  []
 
-<boat.jpg, id=24, 464.73625pt x 606.265pt>
+<boat.jpg, id=80, 464.73625pt x 606.265pt>
 File: boat.jpg Graphic file (type jpg)
  <use boat.jpg>
 Package pdftex.def Info: boat.jpg used on input line 158.
@@ -1141,13 +1141,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 178--183
 
  []
 
-<coil1.png, id=42, 1242.6425pt x 1246.6575pt>
+<coil1.png, id=92, 1242.6425pt x 1246.6575pt>
 File: coil1.png Graphic file (type png)
  <use coil1.png>
 Package pdftex.def Info: coil1.png used on input line 194.
 (pdftex.def)             Requested size: 170.15756pt x 170.71652pt.
 
-<coil2.jpg, id=44, 511.9125pt x 680.5425pt>
+<coil2.jpg, id=94, 511.9125pt x 680.5425pt>
 File: coil2.jpg Graphic file (type jpg)
  <use coil2.jpg>
 Package pdftex.def Info: coil2.jpg used on input line 194.
@@ -1163,7 +1163,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 191--201
  []
 
 [3 <./coil1.png> <./coil2.jpg>]
-<oscillator.png, id=56, 1604.99625pt x 1258.7025pt>
+<oscillator.png, id=105, 1604.99625pt x 1258.7025pt>
 File: oscillator.png Graphic file (type png)
  <use oscillator.png>
 Package pdftex.def Info: oscillator.png used on input line 214.
@@ -1193,28 +1193,18 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 258.
  (./report.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 258.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 258.
-
-
-Package rerunfilecheck Warning: File `report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  C9A7B2D74A956484148066B2CF50BC70;889.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: C9A7B2D74A956484148066B2CF50BC70;889.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 258.
  ) 
 Here is how much of TeX's memory you used:
- 19456 strings out of 493014
- 353530 string characters out of 6133351
- 416936 words of memory out of 5000000
- 22621 multiletter control sequences out of 15000+600000
+ 19472 strings out of 493014
+ 353747 string characters out of 6133351
+ 417090 words of memory out of 5000000
+ 22637 multiletter control sequences out of 15000+600000
  13685 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,6n,56p,622b,598s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,6n,56p,622b,597s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}</usr/loc
 al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/loca
@@ -1234,10 +1224,10 @@ nts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2016/texmf-dist/font
 s/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2016/texmf-dist/fonts/
 type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/ty
 pe1/public/cm-super/sftt1000.pfb>
-Output written on report.pdf (4 pages, 1794594 bytes).
+Output written on report.pdf (4 pages, 1795833 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
+ 185 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
  26 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 158 words of extra memory for PDF output out of 10000 (max. 10000000)
 
