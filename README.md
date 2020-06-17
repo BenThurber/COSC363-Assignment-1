@@ -15,7 +15,7 @@ The program is configured with a CMakeLists.txt file and cmake. The program is c
 
 ### Compile
 cd into Assignment1/ directory and run  
-`cmake .`
+`cmake .`  
 `/ make`  
 which will create a binary file called “assignment1”.  
 
