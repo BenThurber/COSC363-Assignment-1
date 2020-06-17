@@ -7,32 +7,35 @@ For a more thorough explanation, see README.pdf
 The program is configured with a CMakeLists.txt file and cmake. The program is compiled using make.
 
 ### Requirements
-• C++
-• freeGLUT / GLUT 
-• X11
-• cmake
-• make
+• C++  
+• freeGLUT / GLUT  
+• X11  
+• cmake  
+• make  
 
 ### Compile
-cd into Assignment1/ directory and run
-cmake ./ make
-which will create a binary file called “assignment1”.
+cd into Assignment1/ directory and run  
+`cmake .`
+`/ make`  
+which will create a binary file called “assignment1”.  
 
 ### Run
-Run by executing
-./assignment1
+Run by executing  
+`./assignment1`  
 
 ## Movement System
 The camera is moved through the scene using the keyboard. Two key mappings are available which can be toggled between by pressing shift-t. ↑, ↓, ←, → are the arrow keys.
 
 ### Default strict mappings
-The following is the default and follows the required key mapping in the assignment. • ↑, ↓ Move forward, backward
-• ←, → Look left, right
-• ‘w’, ‘s’ Look up, down
-• ‘a’, ‘d’ Move left, right • SPACE BAR Move up • ‘c’ Move down
+The following is the default and follows the required key mapping in the assignment.  
+• ↑, ↓ Move forward, backward  
+• ←, → Look left, right  
+• ‘w’, ‘s’ Look up, down  
+• ‘a’, ‘d’ Move left, right • SPACE BAR Move up • ‘c’ Move down  
 
 ### Custom mappings
-Key mapping that do not follow the assignment guidelines but may be easier to use. • ↑, ↓, ←, → Look up, down, left, right
-• ‘w’, ‘s’, ‘a’, ‘d’ Move forward, back, left right
-• SPACE BAR Move up
-• ‘c’ Move down
+Key mapping that do not follow the assignment guidelines but may be easier to use. 
+• ↑, ↓, ←, → Look up, down, left, right  
+• ‘w’, ‘s’, ‘a’, ‘d’ Move forward, back, left right  
+• SPACE BAR Move up  
+• ‘c’ Move down  
